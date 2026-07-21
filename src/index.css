@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* Design tokens — dark mode par défaut, light via .light sur <html> */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-accent: #6366f1;
+  --color-accent-light: #818cf8;
+  --color-surface: #0a0a0b;
+  --color-surface-elevated: #111113;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-muted: #71717a;
+  --color-foreground: #fafafa;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.light {
+  --color-surface: #fafafa;
+  --color-surface-elevated: #ffffff;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-muted: #71717a;
+  --color-foreground: #09090b;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Grille de fond animée */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  animation: grid-drift 30s linear infinite;
+}
+
+@keyframes grid-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 64px 64px; }
+}
+
+/* Orbes flottants */
+.orb {
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+.orb-indigo { background: rgba(99, 102, 241, 0.5); }
+.orb-violet { background: rgba(139, 92, 246, 0.4); }
+.orb-fuchsia { background: rgba(217, 70, 239, 0.3); }
+
+html.light .orb { opacity: 0.2; }
+
+/* Dégradé animé sur texte */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Glow sur cartes featured */
+.glow-accent {
+  box-shadow: 0 0 80px -20px rgba(99, 102, 241, 0.35);
+}
+
+/* Bordure animée */
+.border-glow {
+  position: relative;
+}
+
+.border-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(99,102,241,0.5), rgba(139,92,246,0.3), rgba(217,70,239,0.2));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.border-glow:hover::before {
+  opacity: 1;
+}
+
+/* Shimmer bouton primary */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-shimmer:hover::after {
+  transform: translateX(100%);
+}
+
+/* Pulse sur indicateur timeline */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.timeline-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 2px solid rgba(99, 102, 241, 0.5);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Chip skill hover */
+.skill-chip {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px -4px rgba(99, 102, 241, 0.25);
+}
+
+/* Section divider animé */
+.section-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.4),
+    rgba(139, 92, 246, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Réduction mouvement */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
