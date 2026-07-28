@@ -1,31 +1,16 @@
-import { Navbar } from "./components/layout/Navbar";
-import { Footer } from "./components/layout/Footer";
-import { Hero } from "./components/sections/Hero";
-import { About } from "./components/sections/About";
-import { Skills } from "./components/sections/Skills";
-import { Projects } from "./components/sections/Projects";
-import { Experience } from "./components/sections/Experience";
-import { Contact } from "./components/sections/Contact";
-import { AnimatedBackground } from "./components/ui/AnimatedBackground";
-import { ScrollProgress } from "./components/ui/ScrollProgress";
+import { SettingsProvider } from "./hooks/useSettings";
+import { WindowManagerProvider } from "./hooks/useWindowManager";
+import { Win98Desktop } from "./components/win98/Desktop";
+import "./index.css";
+import "./styles/win98.css";
 
-/** Page principale — fond animé + barre de scroll */
 function App() {
   return (
-    <>
-      <ScrollProgress />
-      <AnimatedBackground />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <SettingsProvider>
+      <WindowManagerProvider>
+        <Win98Desktop />
+      </WindowManagerProvider>
+    </SettingsProvider>
   );
 }
 

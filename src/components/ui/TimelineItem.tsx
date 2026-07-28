@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { Experience } from "../../data/experience";
-import { Badge } from "./Badge";
+import { TechBadge } from "./TechBadge";
 import { ScrollReveal } from "./ScrollReveal";
 
 type TimelineItemProps = {
@@ -63,7 +63,7 @@ export function TimelineItem({ experience, index, isLast }: TimelineItemProps) {
 
           <div className="flex flex-wrap gap-2">
             {experience.technologies.map((tech) => (
-              <Badge key={tech}>{tech}</Badge>
+              <TechBadge key={tech} name={tech} />
             ))}
           </div>
         </motion.div>

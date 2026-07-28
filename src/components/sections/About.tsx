@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin, Sparkles } from "lucide-react";
+import { GraduationCap, Sparkles } from "lucide-react";
 import { profile } from "../../data/profile";
 import { SectionHeading } from "../ui/SectionHeading";
 import { ScrollReveal } from "../ui/ScrollReveal";
@@ -24,8 +24,7 @@ export function About() {
                 <strong className="text-[var(--color-foreground)]">Computer Science Engineering</strong>{" "}
                 à <strong className="text-[var(--color-foreground)]">ESPRIT</strong> ({profile.location}).
                 Avant ESPRIT, j&apos;ai suivi les classes préparatoires à l&apos;
-                <strong className="text-[var(--color-foreground)]">IPEIM</strong> (369/800 au concours
-                national).
+                <strong className="text-[var(--color-foreground)]">IPEIM</strong>.
               </p>
               <p>
                 Mon parcours combine une formation académique solide en programmation, structures de
@@ -58,11 +57,6 @@ export function About() {
                 icon={<Sparkles className="h-5 w-5 text-violet-400" />}
                 title="Stage précédent — Talan Tunisie"
                 content="AI Engineering Intern (Summer Camp 2025) : LLMs, RL, RAG, multi-agents, A2A/MCP et pipelines de données."
-              />
-              <InfoCard
-                icon={<MapPin className="h-5 w-5 text-indigo-400" />}
-                title="Objectif"
-                content={profile.availability}
               />
             </div>
           </ScrollReveal>

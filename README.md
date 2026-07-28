@@ -22,7 +22,7 @@ Stack : **React + Vite + Tailwind CSS v4 + Framer Motion**
 
 ```bash
 # 1. Cloner le repo (ou naviguer dans le dossier)
-cd portfiloo
+cd portfolio
 
 # 2. Installer les dépendances
 npm install

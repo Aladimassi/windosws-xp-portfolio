@@ -38,17 +38,6 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-6 py-24">
         <motion.div variants={container} initial="hidden" animate="show">
-          {/* Badge disponibilité */}
-          <motion.div variants={item} className="mb-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-medium text-indigo-300">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-400" />
-              </span>
-              {profile.availability}
-            </span>
-          </motion.div>
-
           {/* Avatar + meta */}
           <motion.div variants={item} className="mb-8 flex items-center gap-4">
             <motion.div

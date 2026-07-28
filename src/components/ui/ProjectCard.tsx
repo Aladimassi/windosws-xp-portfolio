@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import type { Project } from "../../data/projects";
-import { Badge } from "./Badge";
+import { TechBadge } from "./TechBadge";
 import { GithubIcon } from "./SocialIcons";
 import { TiltCard } from "./TiltCard";
 import { cn } from "../../lib/utils";
@@ -71,7 +71,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.04 }}
             >
-              <Badge>{tech}</Badge>
+              <TechBadge name={tech} />
             </motion.div>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { SkillCategory } from "../../data/skills";
+import { getTechIcon } from "../../lib/techIcons";
 import { ScrollReveal } from "./ScrollReveal";
 
 type SkillGroupProps = {
@@ -17,7 +18,7 @@ const chipItem = {
   show: { opacity: 1, scale: 1 },
 };
 
-/** Compétences avec stagger et hover dynamique */
+/** Compétences avec icônes officielles et hover dynamique */
 export function SkillGroup({ category, index }: SkillGroupProps) {
   return (
     <ScrollReveal delay={index * 0.08}>
@@ -36,18 +37,25 @@ export function SkillGroup({ category, index }: SkillGroupProps) {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {category.skills.map((skill) => (
-            <motion.div
-              key={skill.name}
-              variants={chipItem}
-              className="skill-chip flex cursor-default items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2"
-            >
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-indigo-500/10 text-xs font-bold text-indigo-400">
-                {skill.icon}
-              </span>
-              <span className="text-sm font-medium">{skill.name}</span>
-            </motion.div>
-          ))}
+          {category.skills.map((skill) => {
+            const { icon: Icon, color } = getTechIcon(skill.name);
+            return (
+              <motion.div
+                key={skill.name}
+                variants={chipItem}
+                className="skill-chip group/skill flex cursor-default items-center gap-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2"
+                whileHover={{ scale: 1.04 }}
+              >
+                <span
+                  className="flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-200 group-hover/skill:bg-white/5"
+                  style={{ backgroundColor: `${color}18` }}
+                >
+                  <Icon size={18} style={{ color }} aria-hidden />
+                </span>
+                <span className="text-sm font-medium">{skill.name}</span>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </motion.div>
     </ScrollReveal>
