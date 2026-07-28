@@ -11,7 +11,7 @@ export function ShutdownDialog({ onClose, onRestart }: ShutdownDialogProps) {
       <div className="w98-dialog w98-outset">
         <div className="w98-titlebar active">
           <span className="w98-titlebar-text" id="shutdown-title">
-            Shut Down Windows
+            Shut Down Windows 98
           </span>
         </div>
         <div className="w98-dialog-body">
@@ -21,10 +21,10 @@ export function ShutdownDialog({ onClose, onRestart }: ShutdownDialogProps) {
               It is now safe to turn off your computer.
             </p>
             <p style={{ margin: "0 0 6px" }}>
-              What would you like to do?
+              Log off <strong>Ala Dimassi</strong> or shut down the computer?
             </p>
             <p style={{ margin: 0, fontSize: 10, color: "#404040" }}>
-              (Portfolio mode — nothing actually shuts down.)
+              (Windows 98 portfolio — nothing actually shuts down.)
             </p>
           </div>
         </div>

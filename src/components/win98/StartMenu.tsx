@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { profile } from "../../data/profile";
 import { type AppId, useWindowManager } from "../../hooks/useWindowManager";
 import {
   BriefcaseIcon,
@@ -64,7 +65,7 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
 
   const portfolioPrograms: MenuEntry[] = [
     { id: "mycomputer", label: "My Computer", icon: <ComputerIcon size={16} />, appId: "mycomputer" },
-    { id: "about", label: "About Ala", icon: <ComputerIcon size={16} />, appId: "about" },
+    { id: "about", label: "About Ala Dimassi", icon: <ComputerIcon size={16} />, appId: "about" },
     { id: "projects", label: "My Projects", icon: <FolderIcon size={16} />, appId: "projects" },
     { id: "skills", label: "Skills", icon: <ControlPanelIcon size={16} />, appId: "skills" },
     { id: "experience", label: "Work History", icon: <BriefcaseIcon size={16} />, appId: "experience" },
@@ -228,6 +229,7 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
       <div className="w98-start-sidebar">
         <span>Windows</span>
         <span className="w98-start-sidebar-ver">98</span>
+        <span className="w98-start-sidebar-user">{profile.name}</span>
       </div>
 
       <div className="w98-start-body">

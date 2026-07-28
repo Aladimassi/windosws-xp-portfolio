@@ -1,8 +1,8 @@
 import { profile } from "../../../data/profile";
 
 const WELCOME_TEXT = `╔══════════════════════════════════════════╗
-║   Welcome to Ala Dimassi's Portfolio    ║
-║              PortfolioOS 98               ║
+║      Welcome to Ala Dimassi's PC         ║
+║            Microsoft Windows 98           ║
 ╚══════════════════════════════════════════╝
 
 Hello! I'm ${profile.name}.
@@ -15,7 +15,7 @@ School:   ESPRIT — Computer Science Engineering
 
 EXPLORE THE DESKTOP:
 
-  [About Ala]     → System Properties & bio
+  [About Ala Dimassi] → System Properties & bio
   [My Projects]   → GitHub repos (Explorer)
   [Skills]        → Control Panel applets
   [Work History]  → Internships & experience

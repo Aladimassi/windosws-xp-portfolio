@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { WinLogo } from "./icons";
 
 const BOOT_MESSAGES = [
-  "Starting PortfolioOS 98...",
+  "Starting Windows 98...",
   "Loading kernel modules...",
   "Initializing desktop environment...",
   "Mounting C:\\Projects...",
   "Loading user profile: Ala Dimassi...",
-  "Welcome.",
+  "Welcome, Ala Dimassi.",
 ];
 
 type BootScreenProps = {
@@ -55,6 +55,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
           <div className="w98-boot-logo">
             Microsoft <span>Windows</span> 98
           </div>
+          <div className="w98-boot-user">Ala Dimassi</div>
         </div>
 
         <div className="w98-boot-bar-wrap w98-outset">
@@ -70,7 +71,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
         </div>
 
         <div className="w98-boot-text">{BOOT_MESSAGES[messageIndex]}</div>
-        <div className="w98-boot-copyright">Copyright © 1998 Ala Dimassi Portfolio</div>
+        <div className="w98-boot-copyright">Copyright © 1998 Microsoft Corp. · Licensed to Ala Dimassi</div>
       </div>
     </div>
   );

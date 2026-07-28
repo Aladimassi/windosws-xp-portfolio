@@ -13,7 +13,7 @@ export function BSOD({ onDismiss }: BSODProps) {
       <p>* Press any key to continue (just kidding — click anywhere)</p>
       <p>* Contact portfolio admin: {profile.email}</p>
       <br />
-      <p>Click to return to Windows...</p>
+      <p>Click to return to Windows 98...</p>
     </div>
   );
 }

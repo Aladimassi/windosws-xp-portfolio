@@ -82,7 +82,8 @@ export function CmdApp({ onBsod }: { onBsod?: () => void }) {
           { type: "out", text: profile.school },
         ]);
       } else if (lower === "ver") {
-        append([{ type: "out", text: "PortfolioOS 98 [Version 4.10.1998]" }]);
+        append([{ type: "out", text: "Microsoft Windows 98 [Version 4.10.1998]" }]);
+        append([{ type: "out", text: "Registered to: Ala Dimassi" }]);
       } else if (lower === "date" || lower === "time") {
         append([{ type: "out", text: new Date().toLocaleString("fr-FR") }]);
       } else if (lower === "projects") {

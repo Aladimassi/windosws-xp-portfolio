@@ -30,7 +30,7 @@ function reply(input: string): string {
     return profile.school;
   }
   if (q.includes("hello") || q.includes("salut") || q.includes("bonjour") || q.includes("hi")) {
-    return "Hello! Welcome to my PortfolioOS 98 😊 Type 'projects' or 'skills' to learn more.";
+    return "Hello! Welcome to Ala Dimassi's Windows 98 desktop 😊 Type 'projects' or 'skills' to learn more.";
   }
   if (q.includes("game") || q.includes("jeu")) {
     return "Try Minesweeper, Snake, or Tetris from Start → Games!";

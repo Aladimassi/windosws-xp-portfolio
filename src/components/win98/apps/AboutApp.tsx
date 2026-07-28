@@ -59,7 +59,7 @@ export function AboutApp() {
               <span>GPU:</span> XGBoost · Gemini · RAG
             </div>
             <div className="w98-spec-item">
-              <span>OS:</span> PortfolioOS 98
+              <span>OS:</span> Microsoft Windows 98
             </div>
           </div>
         </fieldset>

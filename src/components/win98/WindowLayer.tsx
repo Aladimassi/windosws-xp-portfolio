@@ -111,7 +111,7 @@ function GlobeIcon() {
 }
 
 const STATUS: Partial<Record<AppId, string[]>> = {
-  welcome: ["Welcome to Ala Dimassi's portfolio"],
+  welcome: ["Welcome to Ala Dimassi's Windows 98 PC"],
   notepad: ["Ln 1, Col 1"],
   projects: [`${projects.length} object(s)`, "C:\\Projects"],
   recycle: ["0 object(s)"],

@@ -627,6 +627,13 @@ body,
   letter-spacing: 1px !important;
 }
 
+.w98-start-sidebar-user {
+  font-size: 11px !important;
+  letter-spacing: 0.5px !important;
+  opacity: 0.92;
+  margin-top: 8px;
+}
+
 .w98-start-body {
   flex: 1;
   display: flex;
@@ -1296,6 +1303,14 @@ body,
 .w98-boot-logo span {
   color: #fff;
   font-weight: bold;
+}
+
+.w98-boot-user {
+  font-family: var(--w98-font);
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
 }
 
 .w98-boot-bar-wrap {

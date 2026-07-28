@@ -38,7 +38,7 @@ type DesktopItem = {
 
 const DESKTOP_ITEMS: DesktopItem[] = [
   { id: "mycomputer", label: "My Computer", icon: <ComputerIcon />, appId: "mycomputer" },
-  { id: "about", label: "About Ala", icon: <ComputerIcon />, appId: "about" },
+  { id: "about", label: "About Ala Dimassi", icon: <ComputerIcon />, appId: "about" },
   { id: "projects", label: "My Projects", icon: <FolderIcon />, appId: "projects" },
   { id: "ie", label: "Internet Explorer", icon: <GlobeDesktopIcon />, appId: "ie" },
   { id: "chat", label: "MSN Messenger", icon: <MailIcon />, appId: "chat" },

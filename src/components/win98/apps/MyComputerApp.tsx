@@ -23,7 +23,7 @@ const C_DRIVE_ITEMS: Item[] = [
   { label: "Work History", icon: "folder", appId: "experience" },
   { label: "Games", icon: "folder", action: "navigate", target: "c:/games" },
   { label: "Internet Explorer", icon: "folder", appId: "ie" },
-  { label: "About Ala", icon: "folder", appId: "about" },
+  { label: "About Ala Dimassi", icon: "folder", appId: "about" },
 ];
 
 const GAME_ITEMS: Item[] = [

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { profile } from "../../data/profile";
 
 type ScreenSaverProps = {
   onDismiss: () => void;
@@ -39,8 +38,8 @@ export function ScreenSaver({ onDismiss }: ScreenSaverProps) {
         className="w98-screensaver-logo"
         style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
       >
-        <div className="w98-screensaver-text">PortfolioOS 98</div>
-        <div className="w98-screensaver-sub">{profile.name}</div>
+        <div className="w98-screensaver-text">Windows 98</div>
+        <div className="w98-screensaver-sub">Ala Dimassi</div>
       </div>
       <p className="w98-screensaver-hint">Move mouse or tap to return</p>
     </div>

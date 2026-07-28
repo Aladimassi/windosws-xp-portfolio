@@ -17,7 +17,7 @@ export type WindowConfig = {
 
 export const WINDOW_CONFIGS: Record<AppId, WindowConfig> = {
   welcome: { id: "welcome", title: "Welcome.txt — Notepad", defaultWidth: 420, defaultHeight: 320, defaultX: 80, defaultY: 40 },
-  about: { id: "about", title: "About Ala — System Properties", defaultWidth: 480, defaultHeight: 380, defaultX: 120, defaultY: 60 },
+  about: { id: "about", title: "System Properties — Ala Dimassi", defaultWidth: 480, defaultHeight: 380, defaultX: 120, defaultY: 60 },
   projects: { id: "projects", title: "C:\\Projects", defaultWidth: 580, defaultHeight: 420, defaultX: 160, defaultY: 80 },
   skills: { id: "skills", title: "Control Panel — Skills", defaultWidth: 440, defaultHeight: 360, defaultX: 200, defaultY: 100 },
   experience: { id: "experience", title: "Work History", defaultWidth: 460, defaultHeight: 380, defaultX: 140, defaultY: 70 },
