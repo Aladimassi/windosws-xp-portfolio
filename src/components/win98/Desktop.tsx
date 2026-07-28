@@ -24,6 +24,7 @@ import {
 import { RunDialog } from "./RunDialog";
 import { ScreenSaver } from "./ScreenSaver";
 import { ShutdownDialog } from "./ShutdownDialog";
+import { SiteLinkBar } from "./SiteLinkBar";
 import { StartMenu } from "./StartMenu";
 import { Taskbar } from "./Taskbar";
 import { WindowLayer } from "./WindowLayer";
@@ -45,6 +46,12 @@ const DESKTOP_ITEMS: DesktopItem[] = [
   { id: "skills", label: "Skills", icon: <ControlPanelIcon />, appId: "skills" },
   { id: "experience", label: "Work History", icon: <BriefcaseIcon />, appId: "experience" },
   { id: "contact", label: "Contact", icon: <MailIcon />, appId: "contact" },
+  {
+    id: "website",
+    label: "My Website",
+    icon: <GlobeDesktopIcon />,
+    action: () => window.open(profile.website, "_blank", "noopener,noreferrer"),
+  },
   { id: "minesweeper", label: "Minesweeper", icon: <MinesweeperIcon />, appId: "minesweeper" },
   { id: "paint", label: "Paint", icon: <NotepadIcon />, appId: "paint" },
   { id: "cmd", label: "MS-DOS Prompt", icon: <ComputerIcon />, appId: "cmd" },
@@ -243,7 +250,7 @@ export function Win98Desktop() {
           openContextMenu(e.clientX, e.clientY, "desktop");
         }}
         onPointerDown={(e) => {
-          if ((e.target as Element).closest?.(".w98-icon, .w98-window, .w98-taskbar, .w98-context-menu")) return;
+          if ((e.target as Element).closest?.(".w98-icon, .w98-window, .w98-taskbar, .w98-context-menu, .w98-site-link")) return;
           const timer = setTimeout(() => openContextMenu(e.clientX, e.clientY, "desktop"), 600);
           const clear = () => clearTimeout(timer);
           e.currentTarget.addEventListener("pointerup", clear, { once: true });
@@ -299,6 +306,7 @@ export function Win98Desktop() {
           <ShutdownDialog onClose={() => setShutdownOpen(false)} onRestart={handleRefresh} />
         )}
 
+        <SiteLinkBar />
         <Taskbar startOpen={startOpen} onToggleStart={() => setStartOpen((v) => !v)} />
       </div>
     </BsodProvider>
