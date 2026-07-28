@@ -469,68 +469,6 @@ body,
 
 /* ── Taskbar ── */
 
-.w98-site-link {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 4px 10px;
-  max-width: calc(100% - 16px);
-  font-size: 11px;
-}
-
-.w98-site-link-label {
-  font-weight: bold;
-  color: #000080;
-  white-space: nowrap;
-}
-
-.w98-site-link-url {
-  background: #fff;
-  border: 1px inset var(--w98-dark);
-  padding: 2px 8px;
-  font-family: var(--w98-mono);
-  font-size: 11px;
-  color: #000080;
-  cursor: pointer;
-  text-decoration: underline;
-  max-width: 280px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.w98-site-link-url:hover {
-  background: #000080;
-  color: #fff;
-}
-
-.w98-site-link-btn {
-  font-size: 10px;
-  padding: 2px 8px;
-  white-space: nowrap;
-}
-
-@media (max-width: 640px) {
-  .w98-site-link {
-    left: 8px;
-    right: 8px;
-    transform: none;
-    bottom: 32px;
-  }
-
-  .w98-site-link-label {
-    width: 100%;
-    text-align: center;
-  }
-}
-
 .w98-taskbar {
   position: fixed;
   bottom: 0;
