@@ -10,6 +10,8 @@ ${profile.title}
 
 Location: ${profile.location}
 School:   ESPRIT — Computer Science Engineering
+Web:      ${profile.website}
+Short:    ${profile.websiteShort}
 
 ────────────────────────────────────────────
 
@@ -45,6 +47,7 @@ export function NotepadApp() {
 CONTACT
   GitHub:   ${profile.github}
   LinkedIn: ${profile.linkedin}
+  Website:  ${profile.website}
   Email:    ${profile.email}
   Phone:    ${profile.phone}
   CV:       ${profile.cvUrl}

@@ -11,6 +11,8 @@ export const profile = {
   avatar: "/profile.png",
   github: "https://github.com/Aladimassi",
   linkedin: "https://www.linkedin.com/in/ala-dimassi-951b4b31a",
+  website: "https://ala-dimassi-portfolio.vercel.app",
+  websiteShort: "https://ala-dimassi.vercel.app",
   email: "aladimassi34@gmail.com",
   phone: "+216 99 600 945",
   cvUrl: "/cv-ala-dimassi.pdf",

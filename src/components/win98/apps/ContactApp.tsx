@@ -43,6 +43,10 @@ export function ContactApp() {
       <fieldset className="w98-fieldset w98-mail-links">
         <legend>Address Book</legend>
         <div className="w98-contact-links">
+          <a href={profile.website} target="_blank" rel="noopener noreferrer" className="w98-link-row">
+            <span className="w98-link-icon">🏠</span>
+            Portfolio — ala-dimassi-portfolio.vercel.app
+          </a>
           <a href={profile.github} target="_blank" rel="noopener noreferrer" className="w98-link-row">
             <span className="w98-link-icon">🌐</span>
             GitHub — Aladimassi
