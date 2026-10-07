@@ -10,7 +10,7 @@ type Mode = "desktop" | "recruiter";
 /**
  * /recruteur or ?mode=recruteur → classic one-page view.
  * ?mode=desktop → Windows 98 desktop, even on a phone.
- * Otherwise: recruiter view on small screens, desktop elsewhere.
+ * Otherwise: the Windows 98 desktop, on every screen size.
  */
 function pickMode(): Mode {
   const params = new URLSearchParams(window.location.search);
@@ -20,7 +20,7 @@ function pickMode(): Mode {
     return "recruiter";
   }
   if (mode === "desktop") return "desktop";
-  return window.matchMedia("(max-width: 767px)").matches ? "recruiter" : "desktop";
+  return "desktop";
 }
 
 function App() {
