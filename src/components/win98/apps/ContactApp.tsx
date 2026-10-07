@@ -1,67 +1,65 @@
 import { profile } from "../../../data/profile";
 
 export function ContactApp() {
-  const mailto = `mailto:${profile.email}?subject=Hello%20${encodeURIComponent(profile.name)}`;
-
   return (
     <div className="w98-mail">
       <fieldset className="w98-fieldset">
-        <legend>New Message</legend>
+        <legend>Nouveau message</legend>
         <form
           className="w98-contact-form"
           onSubmit={(e) => {
             e.preventDefault();
-            window.location.href = mailto;
+            const data = new FormData(e.currentTarget);
+            const subject = encodeURIComponent(String(data.get("subject") ?? ""));
+            const body = encodeURIComponent(String(data.get("message") ?? ""));
+            window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
           }}
         >
           <label>
-            To:
+            À :
             <input type="text" readOnly value={`${profile.name} <${profile.email}>`} className="w98-inset" />
           </label>
           <label>
-            Subject:
-            <input type="text" defaultValue="Collaboration / Opportunity" className="w98-inset" />
+            Objet :
+            <input name="subject" type="text" defaultValue="PFE Data & IA" className="w98-inset" />
           </label>
           <label>
-            Message:
+            Message :
             <textarea
+              name="message"
               className="w98-inset"
-              defaultValue="Hi Ala, I'd like to get in touch about..."
+              defaultValue="Bonjour Ala, je vous contacte au sujet de..."
             />
           </label>
           <div className="w98-mail-actions">
             <button type="submit" className="w98-btn w98-outset w98-btn--primary">
-              Send
+              Envoyer
             </button>
-            <button type="button" className="w98-btn w98-outset">
-              Attach...
-            </button>
+            <a href={profile.cvUrl} download={profile.cvFileName} className="w98-btn w98-outset">
+              Télécharger le CV
+            </a>
           </div>
         </form>
       </fieldset>
 
       <fieldset className="w98-fieldset w98-mail-links">
-        <legend>Address Book</legend>
+        <legend>Carnet d'adresses</legend>
         <div className="w98-contact-links">
-          <a href={profile.website} target="_blank" rel="noopener noreferrer" className="w98-link-row">
-            <span className="w98-link-icon">🏠</span>
-            Portfolio — ala-dimassi-win98.vercel.app
-          </a>
-          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="w98-link-row">
-            <span className="w98-link-icon">🌐</span>
-            GitHub — Aladimassi
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="w98-link-row">
-            <span className="w98-link-icon">💼</span>
-            LinkedIn — Ala Dimassi
+          <a href={`mailto:${profile.email}`} className="w98-link-row">
+            <span className="w98-link-icon">✉️</span>
+            {profile.email}
           </a>
           <a href={`tel:${profile.phone.replace(/\s/g, "")}`} className="w98-link-row">
             <span className="w98-link-icon">📞</span>
             {profile.phone}
           </a>
-          <a href={profile.cvUrl} download={profile.cvFileName} className="w98-link-row">
-            <span className="w98-link-icon">📄</span>
-            Download CV
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="w98-link-row">
+            <span className="w98-link-icon">💼</span>
+            LinkedIn — Ala Dimassi
+          </a>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="w98-link-row">
+            <span className="w98-link-icon">🌐</span>
+            GitHub — Aladimassi
           </a>
         </div>
       </fieldset>

@@ -1,3 +1,4 @@
+import { getUiScale } from "../../lib/uiScale";
 import { useEffect, useRef, type ReactNode } from "react";
 
 export type ContextMenuItem = {
@@ -25,15 +26,21 @@ export function ContextMenu({ x, y, items, onClose }: ContextMenuProps) {
     const el = ref.current;
     if (!el) return;
 
+    // x/y arrive in screen pixels; the desktop may be zoomed (see uiScale).
+    const scale = getUiScale();
     const rect = el.getBoundingClientRect();
-    let left = x;
-    let top = y;
+    const w = rect.width / scale;
+    const h = rect.height / scale;
+    const viewW = window.innerWidth / scale;
+    const viewH = window.innerHeight / scale;
+    let left = x / scale;
+    let top = y / scale;
 
-    if (left + rect.width > window.innerWidth - 4) {
-      left = window.innerWidth - rect.width - 4;
+    if (left + w > viewW - 4) {
+      left = viewW - w - 4;
     }
-    if (top + rect.height > window.innerHeight - 32) {
-      top = window.innerHeight - rect.height - 32;
+    if (top + h > viewH - 32) {
+      top = viewH - h - 32;
     }
 
     el.style.left = `${Math.max(4, left)}px`;

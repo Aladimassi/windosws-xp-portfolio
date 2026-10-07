@@ -1,3 +1,4 @@
+import { getUiScale } from "../../lib/uiScale";
 import { useRef, type ReactNode } from "react";
 
 type DesktopIconProps = {
@@ -75,8 +76,9 @@ export function DesktopIcon({
           };
           const onUp = (ev: PointerEvent) => {
             if (dragRef.current?.moved && onDragEnd) {
-              const dx = ev.clientX - dragRef.current.startX;
-              const dy = ev.clientY - dragRef.current.startY;
+              const scale = getUiScale();
+              const dx = (ev.clientX - dragRef.current.startX) / scale;
+              const dy = (ev.clientY - dragRef.current.startY) / scale;
               onDragEnd(
                 Math.max(0, dragRef.current.origX + dx),
                 Math.max(0, dragRef.current.origY + dy),

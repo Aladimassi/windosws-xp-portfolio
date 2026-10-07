@@ -85,15 +85,15 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
   ];
 
   const accessories: MenuEntry[] = [
-    { id: "notepad", label: "Notepad", icon: <NotepadIcon size={16} />, appId: "notepad" },
+    { id: "notepad", label: "Bloc-notes", icon: <NotepadIcon size={16} />, appId: "notepad" },
     { id: "welcome", label: "Bienvenue.txt", icon: <NotepadIcon size={16} />, appId: "welcome" },
     { id: "paint", label: "Paint", icon: <NotepadIcon size={16} />, appId: "paint" },
-    { id: "cmd", label: "MS-DOS Prompt", icon: <ComputerIcon size={16} />, appId: "cmd" },
+    { id: "cmd", label: "Invite MS-DOS", icon: <ComputerIcon size={16} />, appId: "cmd" },
     { id: "ie", label: "Internet Explorer", icon: <ComputerIcon size={16} />, appId: "ie" },
     { id: "chat", label: "MSN Messenger", icon: <MailIcon size={16} />, appId: "chat" },
-    { id: "guestbook", label: "Guestbook", icon: <NotepadIcon size={16} />, appId: "guestbook" },
-    { id: "sysmon", label: "System Monitor", icon: <ComputerIcon size={16} />, appId: "sysmon" },
-    { id: "assistant", label: "Portfolio Assistant", icon: <MailIcon size={16} />, appId: "assistant" },
+    { id: "guestbook", label: "Livre d'or", icon: <NotepadIcon size={16} />, appId: "guestbook" },
+    { id: "sysmon", label: "Moniteur système", icon: <ComputerIcon size={16} />, appId: "sysmon" },
+    { id: "assistant", label: "Assistant du portfolio", icon: <MailIcon size={16} />, appId: "assistant" },
   ];
 
   const programItems: MenuEntry[] = [
@@ -106,14 +106,14 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
     },
     {
       id: "games-folder",
-      label: "Games",
+      label: "Jeux",
       icon: <MinesweeperIcon size={16} />,
       bold: true,
       children: games,
     },
     {
       id: "accessories-folder",
-      label: "Accessories",
+      label: "Accessoires",
       icon: <FolderIcon size={16} />,
       bold: true,
       children: accessories,
@@ -136,20 +136,20 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
   ];
 
   const settingsItems: MenuEntry[] = [
-    { id: "cpanel", label: "Control Panel", icon: <ControlPanelIcon size={16} />, appId: "skills" },
-    { id: "display", label: "Display", icon: <ControlPanelIcon size={16} />, appId: "display" },
-    { id: "sysprops", label: "System", icon: <ComputerIcon size={16} />, appId: "about" },
-    { id: "network", label: "Network", icon: <ComputerIcon size={16} />, appId: "network" },
+    { id: "cpanel", label: "Panneau de configuration", icon: <ControlPanelIcon size={16} />, appId: "skills" },
+    { id: "display", label: "Affichage", icon: <ControlPanelIcon size={16} />, appId: "display" },
+    { id: "sysprops", label: "Système", icon: <ComputerIcon size={16} />, appId: "about" },
+    { id: "network", label: "Réseau", icon: <ComputerIcon size={16} />, appId: "network" },
   ];
 
   const topItems: MenuEntry[] = [
-    { id: "programs", label: "Programs", icon: <FolderIcon size={16} />, bold: true, children: programItems },
+    { id: "programs", label: "Programmes", icon: <FolderIcon size={16} />, bold: true, children: programItems },
     { id: "documents", label: "Documents", icon: <DocumentIcon size={16} />, bold: true, children: documentItems },
-    { id: "settings", label: "Settings", icon: <ControlPanelIcon size={16} />, bold: true, children: settingsItems },
+    { id: "settings", label: "Paramètres", icon: <ControlPanelIcon size={16} />, bold: true, children: settingsItems },
     { id: "sep1", separator: true, label: "" },
-    { id: "find", label: "Find", icon: <FindIcon />, appId: "projects" },
-    { id: "help", label: "Help", icon: <HelpIcon />, appId: "welcome" },
-    { id: "run", label: "Run...", icon: <RunIcon />, action: onRun },
+    { id: "find", label: "Rechercher", icon: <FindIcon />, appId: "projects" },
+    { id: "help", label: "Aide", icon: <HelpIcon />, appId: "welcome" },
+    { id: "run", label: "Exécuter...", icon: <RunIcon />, action: onRun },
   ];
 
   const renderLeaf = (entry: MenuEntry) => (
@@ -227,7 +227,7 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
       onMouseLeave={() => setOpenSubmenu(null)}
     >
       <div className="w98-start-sidebar">
-        <span>Windows</span>
+        <span>Ala OS</span>
         <span className="w98-start-sidebar-ver">98</span>
         <span className="w98-start-sidebar-user">{profile.name}</span>
       </div>
@@ -250,7 +250,7 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
             <span className="w98-menu-icon">
               <ShutdownIcon />
             </span>
-            <span className="w98-menu-label">Shut Down...</span>
+            <span className="w98-menu-label">Arrêter...</span>
           </button>
         </div>
       </div>

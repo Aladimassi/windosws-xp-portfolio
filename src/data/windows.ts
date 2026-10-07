@@ -21,9 +21,9 @@ export const WINDOW_CONFIGS: Record<AppId, WindowConfig> = {
   projects: { id: "projects", title: "C:\\Projects", defaultWidth: 660, defaultHeight: 470, defaultX: 160, defaultY: 80 },
   skills: { id: "skills", title: "Compétences", defaultWidth: 440, defaultHeight: 360, defaultX: 200, defaultY: 100 },
   experience: { id: "experience", title: "Expérience", defaultWidth: 520, defaultHeight: 460, defaultX: 140, defaultY: 70 },
-  contact: { id: "contact", title: "Internet Mail — Contact", defaultWidth: 400, defaultHeight: 340, defaultX: 180, defaultY: 90 },
-  notepad: { id: "notepad", title: "readme.txt — Notepad", defaultWidth: 400, defaultHeight: 300, defaultX: 220, defaultY: 120 },
-  recycle: { id: "recycle", title: "Recycle Bin", defaultWidth: 360, defaultHeight: 240, defaultX: 260, defaultY: 140 },
+  contact: { id: "contact", title: "Contact", defaultWidth: 400, defaultHeight: 340, defaultX: 180, defaultY: 90 },
+  notepad: { id: "notepad", title: "readme.txt — Bloc-notes", defaultWidth: 400, defaultHeight: 300, defaultX: 220, defaultY: 120 },
+  recycle: { id: "recycle", title: "Corbeille", defaultWidth: 360, defaultHeight: 240, defaultX: 260, defaultY: 140 },
   minesweeper: { id: "minesweeper", title: "Minesweeper", defaultWidth: 280, defaultHeight: 400, defaultX: 100, defaultY: 50 },
   snake: { id: "snake", title: "Snake", defaultWidth: 320, defaultHeight: 400, defaultX: 110, defaultY: 55 },
   tetris: { id: "tetris", title: "Tetris", defaultWidth: 300, defaultHeight: 440, defaultX: 130, defaultY: 45 },
@@ -34,20 +34,20 @@ export const WINDOW_CONFIGS: Record<AppId, WindowConfig> = {
   memory: { id: "memory", title: "Memory Match", defaultWidth: 320, defaultHeight: 380, defaultX: 125, defaultY: 45 },
   invaders: { id: "invaders", title: "Space Invaders", defaultWidth: 320, defaultHeight: 360, defaultX: 100, defaultY: 40 },
   paint: { id: "paint", title: "Paint", defaultWidth: 520, defaultHeight: 420, defaultX: 150, defaultY: 60 },
-  mycomputer: { id: "mycomputer", title: "My Computer", defaultWidth: 460, defaultHeight: 340, defaultX: 100, defaultY: 70 },
-  cmd: { id: "cmd", title: "MS-DOS Prompt", defaultWidth: 560, defaultHeight: 360, defaultX: 120, defaultY: 80 },
+  mycomputer: { id: "mycomputer", title: "Mon PC", defaultWidth: 460, defaultHeight: 340, defaultX: 100, defaultY: 70 },
+  cmd: { id: "cmd", title: "Invite MS-DOS", defaultWidth: 560, defaultHeight: 360, defaultX: 120, defaultY: 80 },
   ie: { id: "ie", title: "Internet Explorer — GitHub", defaultWidth: 640, defaultHeight: 480, defaultX: 80, defaultY: 30 },
   chat: { id: "chat", title: "MSN Messenger — Ala", defaultWidth: 360, defaultHeight: 420, defaultX: 200, defaultY: 70 },
   cvviewer: { id: "cvviewer", title: "CV-Ala-Dimassi.pdf", defaultWidth: 560, defaultHeight: 520, defaultX: 140, defaultY: 40 },
-  guestbook: { id: "guestbook", title: "Guestbook", defaultWidth: 400, defaultHeight: 360, defaultX: 170, defaultY: 90 },
-  display: { id: "display", title: "Display Properties", defaultWidth: 400, defaultHeight: 340, defaultX: 180, defaultY: 80 },
-  network: { id: "network", title: "Network Neighborhood", defaultWidth: 440, defaultHeight: 360, defaultX: 160, defaultY: 75 },
+  guestbook: { id: "guestbook", title: "Livre d'or", defaultWidth: 400, defaultHeight: 360, defaultX: 170, defaultY: 90 },
+  display: { id: "display", title: "Propriétés de l'affichage", defaultWidth: 400, defaultHeight: 340, defaultX: 180, defaultY: 80 },
+  network: { id: "network", title: "Voisinage réseau", defaultWidth: 440, defaultHeight: 360, defaultX: 160, defaultY: 75 },
   sysmon: { id: "sysmon", title: "System Monitor — GitHub", defaultWidth: 400, defaultHeight: 320, defaultX: 190, defaultY: 85 },
   games: { id: "games", title: "Jeux", defaultWidth: 460, defaultHeight: 340, defaultX: 140, defaultY: 70 },
   assistant: { id: "assistant", title: "Portfolio Assistant", defaultWidth: 380, defaultHeight: 400, defaultX: 210, defaultY: 65 },
 };
 
-const WIN_STORAGE = "portfolioos98-window-positions";
+const WIN_STORAGE = "portfolioos98-window-positions-v2";
 
 export type SavedWindowPos = { x: number; y: number; width: number; height: number };
 

@@ -115,12 +115,12 @@ function GlobeIcon() {
 const STATUS: Partial<Record<AppId, string[]>> = {
   welcome: ["Ala Dimassi — PFE Data & IA"],
   notepad: ["Ln 1, Col 1"],
-  projects: [`${projects.length} object(s)`, "C:\\Projects"],
-  recycle: ["0 object(s)"],
-  about: ["General tab"],
-  skills: ["Control Panel"],
-  experience: ["2 record(s)"],
-  contact: ["Ready"],
+  projects: [`${projects.length} projet(s)`, "C:\\Projets"],
+  recycle: ["0 élément"],
+  about: ["Onglet Général"],
+  skills: ["Panneau de configuration"],
+  experience: ["2 stages"],
+  contact: ["Prêt"],
   minesweeper: ["Beginner: 9×9, 10 mines"],
   snake: ["Use arrows or pad"],
   tetris: ["Lines: score x100"],
@@ -132,8 +132,8 @@ const STATUS: Partial<Record<AppId, string[]>> = {
   invaders: ["◀ ▶ · Fire"],
   paint: ["Free draw"],
   cmd: ["C:\\Users\\Ala"],
-  ie: ["Connected"],
-  chat: ["Online"],
+  ie: ["Connecté"],
+  chat: ["En ligne"],
   sysmon: ["Refreshing..."],
 };
 
@@ -162,7 +162,7 @@ export function WindowLayer() {
             maximized={w.maximized}
             zIndex={w.zIndex}
             statusPanels={STATUS[w.id]}
-            menuBar={NOTEPAD_IDS.includes(w.id) ? <MenuBar items={["File", "Edit", "Search", "Help"]} /> : undefined}
+            menuBar={NOTEPAD_IDS.includes(w.id) ? <MenuBar items={["Fichier", "Édition", "Recherche", "Aide"]} /> : undefined}
             noPadding={FLUSH_IDS.includes(w.id)}
           >
             <App />

@@ -1,3 +1,4 @@
+import { ICON_AREA_WIDTH, getWorkArea } from "../lib/uiScale";
 import {
   createContext,
   useCallback,
@@ -72,13 +73,21 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
         const config = WINDOW_CONFIGS[id];
         const saved = loadWindowPos(id);
         zCounter += 1;
-        const offset = prev.length * 20;
+        const area = getWorkArea();
+        const left = area.width >= 760 ? ICON_AREA_WIDTH : 0;
+        const availW = area.width - left;
+        const width = Math.min(saved?.width ?? config.defaultWidth, availW - 16);
+        const height = Math.min(saved?.height ?? config.defaultHeight, area.height - 16);
+        const offset = (prev.filter((w) => !w.minimized).length % 6) * 28;
+        const centeredX = left + Math.max(8, (availW - width) / 2 - 60) + offset;
+        const centeredY = Math.max(8, (area.height - height) / 2 - 30) + offset;
+        const clamp = (v: number, max: number) => Math.max(0, Math.min(v, max));
         const instance: WindowInstance = {
           ...config,
-          x: saved?.x ?? config.defaultX + offset,
-          y: saved?.y ?? config.defaultY + offset,
-          width: saved?.width ?? config.defaultWidth,
-          height: saved?.height ?? config.defaultHeight,
+          x: clamp(saved?.x ?? centeredX, area.width - 120),
+          y: clamp(saved?.y ?? centeredY, area.height - 60),
+          width,
+          height,
           minimized: false,
           maximized: false,
           zIndex: zCounter,

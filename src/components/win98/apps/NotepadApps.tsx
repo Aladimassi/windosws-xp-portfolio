@@ -56,11 +56,11 @@ export function RecycleApp() {
   return (
     <div className="w98-recycle-empty">
       <div className="w98-recycle-icon">🗑️</div>
-      <p className="w98-recycle-title">Recycle Bin</p>
+      <p className="w98-recycle-title">Corbeille</p>
       <p className="w98-recycle-sub">
-        The Recycle Bin is empty.
+        La corbeille est vide.
         <br />
-        No bugs were harmed building this portfolio.
+        Aucun bug n'a été maltraité pendant la création de ce portfolio.
       </p>
     </div>
   );

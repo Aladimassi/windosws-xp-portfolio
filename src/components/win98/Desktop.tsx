@@ -1,3 +1,4 @@
+import { getUiScale } from "../../lib/uiScale";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { profile } from "../../data/profile";
 import { BsodProvider } from "../../hooks/useBsod";
@@ -98,6 +99,17 @@ export function Win98Desktop() {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; target: "desktop" | DesktopItem } | null>(null);
   const idleRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const [, setScaleTick] = useState(0);
+  useEffect(() => {
+    const apply = () => {
+      document.documentElement.style.setProperty("--ui-scale", String(getUiScale()));
+      setScaleTick((t) => t + 1);
+    };
+    apply();
+    window.addEventListener("resize", apply);
+    return () => window.removeEventListener("resize", apply);
+  }, []);
 
   const resetIdle = useCallback(() => {
     if (idleRef.current) clearTimeout(idleRef.current);
@@ -266,6 +278,16 @@ export function Win98Desktop() {
         role="presentation"
       >
         {wallpaperEl}
+
+        <aside className="w98-identity" aria-label="Ala Dimassi">
+          <div className="w98-identity-name">{profile.name}</div>
+          <div className="w98-identity-title">Élève ingénieur IA &amp; Data · ESPRIT</div>
+          <div className="w98-identity-target">{profile.target}</div>
+          <div className="w98-identity-actions">
+            <a href={RECRUITER_URL} className="w98-btn w98-outset w98-btn--primary">Vue recruteur</a>
+            <a href={profile.cvUrl} download={profile.cvFileName} className="w98-btn w98-outset">Télécharger le CV</a>
+          </div>
+        </aside>
 
         <div className="w98-desktop-icons w98-desktop-icons--free">
           {DESKTOP_ITEMS.map((item, i) => {

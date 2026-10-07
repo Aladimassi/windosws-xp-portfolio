@@ -3,6 +3,7 @@ import { academicProjects, featuredProjects, projects, type Project } from "../.
 import { projectImageUrl } from "../../../lib/projectImages";
 import { FolderClosedIcon, FolderIcon } from "../icons";
 import { Toolbar } from "../Toolbar";
+import { PixeliumDiagram } from "../../recruiter/PixeliumDiagram";
 
 export function ProjectsApp() {
   const [selectedId, setSelectedId] = useState<string | null>(
@@ -81,6 +82,11 @@ export function ProjectsApp() {
                     <li key={m}><strong>{m}</strong></li>
                   ))}
                 </ul>
+              )}
+              {selected.id === "pixelium" && (
+                <div className="w98-inset" style={{ background: "#fff", padding: 8, margin: "6px 0 10px" }}>
+                  <PixeliumDiagram />
+                </div>
               )}
               <div className="w98-project-stack">
                 {selected.stack.map((tech) => (

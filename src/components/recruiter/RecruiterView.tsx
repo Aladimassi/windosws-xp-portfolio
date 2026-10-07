@@ -1,23 +1,71 @@
+import { useEffect, useState } from "react";
 import { experiences } from "../../data/experience";
 import { academicProjects, featuredProjects } from "../../data/projects";
 import { profile } from "../../data/profile";
+import { experiencesEn, profileEn, projectsEn, skillTitlesEn } from "../../data/recruiterEn";
 import { skillCategories } from "../../data/skills";
+import { PixeliumDiagram } from "./PixeliumDiagram";
 
-const EDUCATION = [
-  {
-    school: "ESPRIT",
-    degree: "Cycle ingénieur en informatique",
-    period: "2024 — aujourd'hui",
-    detail: "Cours : gestion de projet, ERP Odoo, administration de bases Oracle, RSE.",
+type Lang = "fr" | "en";
+
+const UI = {
+  fr: {
+    nav: { experience: "Expérience", projects: "Projets", skills: "Compétences", contact: "Contact" },
+    desktop: "Version Windows 98",
+    cv: "Télécharger le CV",
+    contactMe: "Me contacter",
+    seeking: "Recherche :",
+    experience: "Expérience",
+    projects: "Projets phares",
+    pixeliumZoom: "Zoom sur Pixelium",
+    code: "Code sur GitHub →",
+    demo: "Démo en ligne →",
+    academic: "Projets académiques",
+    skills: "Compétences",
+    education: "Formation",
+    certs: "Certifications IBM Machine Learning et Deep Learning (Coursera) · Hackathon : 6e sur 32 équipes.",
+    contact: "Contact",
+    contactText: "Disponible pour un PFE en Data & IA. Écrivez-moi à",
+    or: "ou appelez le",
+    footerDesktop: "Voir la version interactive Windows 98",
+    mailSubject: "PFE Data & IA",
+    education1: { degree: "Cycle ingénieur en informatique", period: "2024 — aujourd'hui", detail: "Cours : gestion de projet, ERP Odoo, administration de bases Oracle, RSE." },
+    education2: { degree: "Classes préparatoires aux études d'ingénieur", period: "2022 — 2024" },
+    docTitle: "Ala Dimassi — Élève ingénieur IA & Data",
   },
-  {
-    school: "IPEIM",
-    degree: "Classes préparatoires aux études d'ingénieur",
-    period: "2022 — 2024",
+  en: {
+    nav: { experience: "Experience", projects: "Projects", skills: "Skills", contact: "Contact" },
+    desktop: "Windows 98 version",
+    cv: "Download CV",
+    contactMe: "Contact me",
+    seeking: "Looking for:",
+    experience: "Experience",
+    projects: "Key projects",
+    pixeliumZoom: "A closer look at Pixelium",
+    code: "Code on GitHub →",
+    demo: "Live demo →",
+    academic: "Academic projects",
+    skills: "Skills",
+    education: "Education",
+    certs: "IBM Machine Learning and Deep Learning certifications (Coursera) · Hackathon: 6th out of 32 teams.",
+    contact: "Contact",
+    contactText: "Available for a final-year internship in Data & AI. Email me at",
+    or: "or call",
+    footerDesktop: "See the interactive Windows 98 version",
+    mailSubject: "Data & AI internship",
+    education1: { degree: "Computer Science Engineering degree", period: "2024 — present", detail: "Courses: project management, Odoo ERP, Oracle database administration, CSR." },
+    education2: { degree: "Preparatory classes for engineering schools", period: "2022 — 2024" },
+    docTitle: "Ala Dimassi — AI & Data Engineering Student",
   },
-];
+} as const;
 
 const DESKTOP_URL = "/?mode=desktop";
+
+function initialLang(): Lang {
+  const param = new URLSearchParams(window.location.search).get("lang");
+  if (param === "en" || param === "fr") return param;
+  return "fr";
+}
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -67,32 +115,71 @@ function LinkButton({
   );
 }
 
-/** Classic one-page portfolio for recruiters and mobile visitors. */
+/** Classic one-page portfolio for recruiters and mobile visitors, in French or English. */
 export function RecruiterView() {
+  const [lang, setLang] = useState<Lang>(initialLang);
+  const t = UI[lang];
+  const p = lang === "en" ? { ...profile, ...profileEn } : profile;
+  const exps = lang === "en" ? experiencesEn : experiences;
+  const projects = featuredProjects.map((pr) => (lang === "en" ? { ...pr, ...projectsEn[pr.id] } : pr));
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title = UI[lang].docTitle;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const switchLang = (next: Lang) => {
+    setLang(next);
+    document.documentElement.lang = next;
+    document.title = UI[next].docTitle;
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", next);
+    window.history.replaceState(null, "", url);
+  };
+
   return (
     <div className="fixed inset-0 overflow-y-auto bg-white font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
       <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
-        <nav className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <nav className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <a href="#top" className="text-sm font-bold tracking-tight">
             Ala Dimassi
           </a>
-          <div className="hidden gap-5 text-sm text-slate-600 sm:flex dark:text-slate-400">
-            <a href="#experience" className="hover:text-slate-900 dark:hover:text-white">Expérience</a>
-            <a href="#projets" className="hover:text-slate-900 dark:hover:text-white">Projets</a>
-            <a href="#competences" className="hover:text-slate-900 dark:hover:text-white">Compétences</a>
-            <a href="#contact" className="hover:text-slate-900 dark:hover:text-white">Contact</a>
+          <div className="hidden gap-5 text-sm text-slate-600 md:flex dark:text-slate-400">
+            <a href="#experience" className="hover:text-slate-900 dark:hover:text-white">{t.nav.experience}</a>
+            <a href="#projets" className="hover:text-slate-900 dark:hover:text-white">{t.nav.projects}</a>
+            <a href="#competences" className="hover:text-slate-900 dark:hover:text-white">{t.nav.skills}</a>
+            <a href="#contact" className="hover:text-slate-900 dark:hover:text-white">{t.nav.contact}</a>
           </div>
-          <a
-            href={DESKTOP_URL}
-            className="rounded-md border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-          >
-            Version Windows 98
-          </a>
+          <div className="flex items-center gap-2">
+            <div role="group" aria-label="Langue / Language" className="flex overflow-hidden rounded-md border border-slate-300 text-xs font-semibold dark:border-slate-700">
+              {(["fr", "en"] as const).map((l) => (
+                <button
+                  key={l}
+                  type="button"
+                  onClick={() => switchLang(l)}
+                  aria-pressed={lang === l}
+                  className={
+                    lang === l
+                      ? "bg-slate-900 px-2.5 py-1 text-white dark:bg-slate-100 dark:text-slate-900"
+                      : "px-2.5 py-1 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                  }
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
+            <a
+              href={DESKTOP_URL}
+              className="hidden rounded-md border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 sm:inline-block dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            >
+              {t.desktop}
+            </a>
+          </div>
         </nav>
       </header>
 
       <main id="top" className="mx-auto max-w-4xl px-4 pb-16 sm:px-6">
-        {/* Hero */}
         <div className="flex flex-col gap-6 py-10 sm:flex-row sm:items-center">
           <img
             src={profile.avatar}
@@ -103,15 +190,15 @@ export function RecruiterView() {
           />
           <div>
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{profile.name}</h1>
-            <p className="mt-1 text-lg text-slate-700 dark:text-slate-300">{profile.title}</p>
+            <p className="mt-1 text-lg text-slate-700 dark:text-slate-300">{p.title}</p>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-              {profile.location} · ESPRIT · {profile.languages}
+              {p.location} · ESPRIT · {p.languages}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <LinkButton href={profile.cvUrl} download={profile.cvFileName} primary>
-                Télécharger le CV
+                {t.cv}
               </LinkButton>
-              <LinkButton href={`mailto:${profile.email}?subject=PFE%20Data%20%26%20IA`}>Me contacter</LinkButton>
+              <LinkButton href={`mailto:${profile.email}?subject=${encodeURIComponent(t.mailSubject)}`}>{t.contactMe}</LinkButton>
               <LinkButton href={profile.linkedin}>LinkedIn</LinkButton>
               <LinkButton href={profile.github}>GitHub</LinkButton>
             </div>
@@ -119,13 +206,15 @@ export function RecruiterView() {
         </div>
 
         <div className="mb-10 rounded-xl border border-indigo-200 bg-indigo-50 p-5 dark:border-indigo-900 dark:bg-indigo-950/40">
-          <p className="text-sm font-semibold text-indigo-900 dark:text-indigo-200">Recherche : {profile.target}</p>
-          <p className="mt-2 text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">{profile.tagline}</p>
+          <p className="text-sm font-semibold text-indigo-900 dark:text-indigo-200">
+            {t.seeking} {p.target}
+          </p>
+          <p className="mt-2 text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">{p.tagline}</p>
         </div>
 
-        <Section id="experience" title="Expérience">
+        <Section id="experience" title={t.experience}>
           <div className="space-y-8">
-            {experiences.map((exp) => (
+            {exps.map((exp) => (
               <article key={exp.company}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <h3 className="text-lg font-semibold">
@@ -142,8 +231,8 @@ export function RecruiterView() {
                   ))}
                 </ul>
                 <div className="mt-3 flex flex-wrap gap-1.5">
-                  {exp.technologies.map((t) => (
-                    <Tag key={t}>{t}</Tag>
+                  {exp.technologies.map((tech) => (
+                    <Tag key={tech}>{tech}</Tag>
                   ))}
                 </div>
               </article>
@@ -151,18 +240,20 @@ export function RecruiterView() {
           </div>
         </Section>
 
-        <Section id="projets" title="Projets phares">
+        <Section id="projets" title={t.projects}>
+          <div className="mb-6 rounded-xl border border-slate-200 p-5 dark:border-slate-800">
+            <h3 className="font-semibold">{t.pixeliumZoom}</h3>
+            <PixeliumDiagram lang={lang} />
+          </div>
+
           <div className="grid gap-4 sm:grid-cols-2">
-            {featuredProjects.map((p) => (
-              <article
-                key={p.id}
-                className="flex flex-col rounded-xl border border-slate-200 p-5 dark:border-slate-800"
-              >
-                <h3 className="font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">{p.description}</p>
-                {p.metrics && (
+            {projects.map((pr) => (
+              <article key={pr.id} className="flex flex-col rounded-xl border border-slate-200 p-5 dark:border-slate-800">
+                <h3 className="font-semibold">{pr.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">{pr.description}</p>
+                {pr.metrics && (
                   <ul className="mt-3 space-y-1 text-sm font-medium text-slate-900 dark:text-slate-100">
-                    {p.metrics.map((m) => (
+                    {pr.metrics.map((m) => (
                       <li key={m} className="flex gap-2">
                         <span aria-hidden className="text-indigo-600 dark:text-indigo-400">▸</span>
                         {m}
@@ -171,17 +262,17 @@ export function RecruiterView() {
                   </ul>
                 )}
                 <div className="mt-3 flex flex-wrap gap-1.5">
-                  {p.stack.map((t) => (
-                    <Tag key={t}>{t}</Tag>
+                  {pr.stack.map((tech) => (
+                    <Tag key={tech}>{tech}</Tag>
                   ))}
                 </div>
                 <div className="mt-auto flex gap-4 pt-4 text-sm font-semibold">
-                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-indigo-700 hover:underline dark:text-indigo-300">
-                    Code sur GitHub →
+                  <a href={pr.github} target="_blank" rel="noopener noreferrer" className="text-indigo-700 hover:underline dark:text-indigo-300">
+                    {t.code}
                   </a>
-                  {p.demo && (
-                    <a href={p.demo} target="_blank" rel="noopener noreferrer" className="text-indigo-700 hover:underline dark:text-indigo-300">
-                      Démo en ligne →
+                  {pr.demo && (
+                    <a href={pr.demo} target="_blank" rel="noopener noreferrer" className="text-indigo-700 hover:underline dark:text-indigo-300">
+                      {t.demo}
                     </a>
                   )}
                 </div>
@@ -191,26 +282,26 @@ export function RecruiterView() {
 
           <details className="mt-6 rounded-xl border border-slate-200 p-4 dark:border-slate-800">
             <summary className="cursor-pointer text-sm font-semibold text-slate-700 dark:text-slate-300">
-              Projets académiques ({academicProjects.length})
+              {t.academic} ({academicProjects.length})
             </summary>
             <ul className="mt-3 space-y-2 text-sm">
-              {academicProjects.map((p) => (
-                <li key={p.id}>
-                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="font-medium text-indigo-700 hover:underline dark:text-indigo-300">
-                    {p.title}
+              {academicProjects.map((pr) => (
+                <li key={pr.id}>
+                  <a href={pr.github} target="_blank" rel="noopener noreferrer" className="font-medium text-indigo-700 hover:underline dark:text-indigo-300">
+                    {pr.title}
                   </a>{" "}
-                  <span className="text-slate-600 dark:text-slate-400">— {p.description}</span>
+                  <span className="text-slate-600 dark:text-slate-400">— {pr.description}</span>
                 </li>
               ))}
             </ul>
           </details>
         </Section>
 
-        <Section id="competences" title="Compétences">
+        <Section id="competences" title={t.skills}>
           <dl className="grid gap-5 sm:grid-cols-2">
             {skillCategories.map((cat) => (
               <div key={cat.title}>
-                <dt className="mb-2 text-sm font-semibold">{cat.title}</dt>
+                <dt className="mb-2 text-sm font-semibold">{lang === "en" ? skillTitlesEn[cat.title] ?? cat.title : cat.title}</dt>
                 <dd className="flex flex-wrap gap-1.5">
                   {cat.skills.map((s) => (
                     <Tag key={s.name}>{s.name}</Tag>
@@ -221,9 +312,12 @@ export function RecruiterView() {
           </dl>
         </Section>
 
-        <Section id="formation" title="Formation">
+        <Section id="formation" title={t.education}>
           <div className="space-y-4">
-            {EDUCATION.map((e) => (
+            {[
+              { school: "ESPRIT", ...t.education1 },
+              { school: "IPEIM", ...t.education2 },
+            ].map((e) => (
               <div key={e.school}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <h3 className="font-semibold">
@@ -231,22 +325,20 @@ export function RecruiterView() {
                   </h3>
                   <span className="text-sm text-slate-500 dark:text-slate-400">{e.period}</span>
                 </div>
-                {e.detail && <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{e.detail}</p>}
+                {"detail" in e && <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{e.detail}</p>}
               </div>
             ))}
-            <p className="text-sm text-slate-700 dark:text-slate-300">
-              Certifications IBM Machine Learning et Deep Learning (Coursera) · Hackathon : 6e sur 32 équipes.
-            </p>
+            <p className="text-sm text-slate-700 dark:text-slate-300">{t.certs}</p>
           </div>
         </Section>
 
-        <Section id="contact" title="Contact">
+        <Section id="contact" title={t.contact}>
           <p className="text-[15px] text-slate-700 dark:text-slate-300">
-            Disponible pour un PFE en Data & IA. Écrivez-moi à{" "}
+            {t.contactText}{" "}
             <a href={`mailto:${profile.email}`} className="font-semibold text-indigo-700 hover:underline dark:text-indigo-300">
               {profile.email}
             </a>{" "}
-            ou appelez le{" "}
+            {t.or}{" "}
             <a href={`tel:${profile.phone.replace(/\s/g, "")}`} className="font-semibold text-indigo-700 hover:underline dark:text-indigo-300">
               {profile.phone}
             </a>
@@ -258,7 +350,7 @@ export function RecruiterView() {
       <footer className="border-t border-slate-200 py-6 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
         © {new Date().getFullYear()} Ala Dimassi ·{" "}
         <a href={DESKTOP_URL} className="hover:underline">
-          Voir la version interactive Windows 98
+          {t.footerDesktop}
         </a>
       </footer>
     </div>

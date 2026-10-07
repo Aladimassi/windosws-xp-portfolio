@@ -1,3 +1,4 @@
+import { getUiScale, getWorkArea } from "../../lib/uiScale";
 import { useCallback, useRef, type ReactNode, type MouseEvent } from "react";
 import { type AppId, useWindowManager } from "../../hooks/useWindowManager";
 import { CloseIcon, MaximizeIcon, MinimizeIcon, RestoreIcon } from "./icons";
@@ -67,10 +68,12 @@ export function Window({
 
       const onMove = (ev: globalThis.MouseEvent) => {
         if (!dragRef.current) return;
-        const dx = ev.clientX - dragRef.current.startX;
-        const dy = ev.clientY - dragRef.current.startY;
-        const maxX = window.innerWidth - 100;
-        const maxY = window.innerHeight - 60;
+        const scale = getUiScale();
+        const area = getWorkArea();
+        const dx = (ev.clientX - dragRef.current.startX) / scale;
+        const dy = (ev.clientY - dragRef.current.startY) / scale;
+        const maxX = area.width - 100;
+        const maxY = area.height - 30;
         moveWindow(
           id,
           Math.max(0, Math.min(maxX, dragRef.current.origX + dx)),

@@ -11,19 +11,19 @@ type Item = {
 };
 
 const ROOT_ITEMS: Item[] = [
-  { label: "3½ Floppy (A:)", icon: "drive", action: "navigate", target: "a:" },
-  { label: "Local Disk (C:)", icon: "drive", action: "navigate", target: "c:" },
-  { label: "Network Neighborhood", icon: "network", appId: "network" },
+  { label: "Disquette 3½ (A:)", icon: "drive", action: "navigate", target: "a:" },
+  { label: "Disque local (C:)", icon: "drive", action: "navigate", target: "c:" },
+  { label: "Voisinage réseau", icon: "network", appId: "network" },
 ];
 
 const C_DRIVE_ITEMS: Item[] = [
-  { label: "My Documents", icon: "folder", appId: "cvviewer" },
-  { label: "Projects", icon: "folder", appId: "projects" },
-  { label: "Control Panel", icon: "folder", appId: "skills" },
-  { label: "Work History", icon: "folder", appId: "experience" },
-  { label: "Games", icon: "folder", action: "navigate", target: "c:/games" },
+  { label: "Mon CV", icon: "folder", appId: "cvviewer" },
+  { label: "Projets", icon: "folder", appId: "projects" },
+  { label: "Compétences", icon: "folder", appId: "skills" },
+  { label: "Expérience", icon: "folder", appId: "experience" },
+  { label: "Jeux", icon: "folder", action: "navigate", target: "c:/games" },
   { label: "Internet Explorer", icon: "folder", appId: "ie" },
-  { label: "About Ala Dimassi", icon: "folder", appId: "about" },
+  { label: "À propos de moi", icon: "folder", appId: "about" },
 ];
 
 const GAME_ITEMS: Item[] = [
@@ -39,14 +39,14 @@ const GAME_ITEMS: Item[] = [
 ];
 
 const VIEWS: Record<string, { path: string; title: string; items: Item[]; empty?: string }> = {
-  root: { path: "My Computer", title: "My Computer", items: ROOT_ITEMS },
-  "c:": { path: "C:\\", title: "Local Disk (C:)", items: C_DRIVE_ITEMS },
-  "c:/games": { path: "C:\\Games", title: "Games", items: GAME_ITEMS },
+  root: { path: "Mon PC", title: "Mon PC", items: ROOT_ITEMS },
+  "c:": { path: "C:\\", title: "Disque local (C:)", items: C_DRIVE_ITEMS },
+  "c:/games": { path: "C:\\Jeux", title: "Jeux", items: GAME_ITEMS },
   "a:": {
     path: "A:\\",
-    title: "3½ Floppy (A:)",
+    title: "Disquette 3½ (A:)",
     items: [],
-    empty: "Please insert a disk into drive A:",
+    empty: "Insérez une disquette dans le lecteur A:",
   },
 };
 
@@ -81,11 +81,11 @@ export function MyComputerApp({ initialView = "root" }: { initialView?: string }
       <div className="w98-mycomputer-bar w98-outset">
         {canGoUp && (
           <button type="button" className="w98-btn w98-outset" onClick={goUp}>
-            ↑ Up
+            ↑ Dossier parent
           </button>
         )}
         <span className="w98-mycomputer-address">
-          Address: <strong>{current.path}</strong>
+          Adresse : <strong>{current.path}</strong>
         </span>
       </div>
 

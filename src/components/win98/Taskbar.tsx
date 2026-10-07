@@ -35,10 +35,10 @@ export function Taskbar({ startOpen, onToggleStart }: TaskbarProps) {
         className={`w98-btn w98-start-btn${startOpen ? " active" : ""}`}
         onClick={toggleStart}
         aria-expanded={startOpen}
-        aria-label="Start"
+        aria-label="Démarrer"
       >
         <WinLogo size={16} className="w98-start-logo" />
-        Start
+        Démarrer
       </button>
 
       <div className="w98-taskbar-divider" aria-hidden />
@@ -64,6 +64,14 @@ export function Taskbar({ startOpen, onToggleStart }: TaskbarProps) {
           </button>
         ))}
       </div>
+
+      <a
+        href="/?mode=recruteur"
+        className="w98-btn w98-outset w98-taskbar-recruiter"
+        title="Version classique en une page, pour les recruteurs"
+      >
+        👔 Vue recruteur
+      </a>
 
       <div className="w98-tray w98-inset">
         <span className="w98-tray-icon" aria-hidden title="Volume">
