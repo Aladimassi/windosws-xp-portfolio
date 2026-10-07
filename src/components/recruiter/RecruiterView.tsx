@@ -171,9 +171,11 @@ export function RecruiterView() {
             </div>
             <a
               href={DESKTOP_URL}
-              className="hidden rounded-md border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 sm:inline-block dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="inline-flex items-center gap-1 rounded-md bg-[#000080] px-2.5 py-1 text-xs font-semibold text-white hover:bg-[#1a1aa0]"
             >
-              {t.desktop}
+              <span aria-hidden>🪟</span>
+              <span className="sm:hidden">Win 98</span>
+              <span className="hidden sm:inline">{t.desktop}</span>
             </a>
           </div>
         </nav>
