@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { projects } from "../../../data/projects";
+import { academicProjects, featuredProjects, projects, type Project } from "../../../data/projects";
 import { projectImageUrl } from "../../../lib/projectImages";
 import { FolderClosedIcon, FolderIcon } from "../icons";
 import { Toolbar } from "../Toolbar";
@@ -33,20 +33,25 @@ export function ProjectsApp() {
 
       <div className="w98-explorer">
         <div className="w98-explorer-tree w98-inset">
-          <div className="w98-tree-header">All Folders</div>
-          <div className="w98-tree-item w98-tree-item--root selected">
-            <FolderClosedIcon size={14} />
-            C:\Projects
-          </div>
-          {projects.map((p) => (
-            <div
-              key={p.id}
-              className={`w98-tree-item${selectedId === p.id ? " selected" : ""}`}
-              onClick={() => setSelectedId(p.id)}
-              onDoubleClick={() => window.open(p.github, "_blank", "noopener")}
-            >
-              <FolderClosedIcon size={14} />
-              {p.title.split("—")[0]?.trim() ?? p.title}
+          <div className="w98-tree-header">Dossiers</div>
+          {([["Projets phares", featuredProjects], ["Projets académiques", academicProjects]] as [string, Project[]][]).map(([label, list]) => (
+            <div key={label}>
+              <div className="w98-tree-item w98-tree-item--root">
+                <FolderClosedIcon size={14} />
+                {label}
+              </div>
+              {list.map((p) => (
+                <div
+                  key={p.id}
+                  className={`w98-tree-item${selectedId === p.id ? " selected" : ""}`}
+                  style={{ paddingLeft: 22 }}
+                  onClick={() => setSelectedId(p.id)}
+                  onDoubleClick={() => window.open(p.github, "_blank", "noopener")}
+                >
+                  <FolderClosedIcon size={14} />
+                  {p.title.split("—")[0]?.trim() ?? p.title}
+                </div>
+              ))}
             </div>
           ))}
         </div>
@@ -66,10 +71,17 @@ export function ProjectsApp() {
                 <FolderIcon size={32} />
                 <div>
                   <h2 className="w98-project-title">{selected.title}</h2>
-                  {selected.featured && <span className="w98-badge">Featured</span>}
+                  {selected.featured && <span className="w98-badge">Projet phare</span>}
                 </div>
               </div>
               <p className="w98-project-desc">{selected.description}</p>
+              {selected.metrics && selected.metrics.length > 0 && (
+                <ul className="w98-exp-list" style={{ margin: "6px 0 10px" }}>
+                  {selected.metrics.map((m) => (
+                    <li key={m}><strong>{m}</strong></li>
+                  ))}
+                </ul>
+              )}
               <div className="w98-project-stack">
                 {selected.stack.map((tech) => (
                   <span key={tech} className="w98-tag w98-outset">
@@ -83,7 +95,7 @@ export function ProjectsApp() {
                   className="w98-btn w98-outset w98-btn--primary"
                   onClick={() => window.open(selected.github, "_blank", "noopener")}
                 >
-                  Open on GitHub
+                  Voir sur GitHub
                 </button>
                 {selected.demo && (
                   <button
@@ -91,7 +103,7 @@ export function ProjectsApp() {
                     className="w98-btn w98-outset"
                     onClick={() => window.open(selected.demo, "_blank", "noopener")}
                   >
-                    Live Demo
+                    Démo en ligne
                   </button>
                 )}
               </div>

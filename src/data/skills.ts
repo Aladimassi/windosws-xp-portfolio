@@ -8,57 +8,27 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Languages",
-    skills: [
-      { name: "Python" },
-      { name: "Java" },
-      { name: "JavaScript" },
-      { name: "TypeScript" },
-      { name: "SQL" },
-      { name: "C" },
-    ],
+    title: "IA & LLM",
+    skills: [{ name: "RAG / RAG multimodal" }, { name: "LangChain" }, { name: "LangGraph" }, { name: "Multi-agents (A2A, MCP)" }, { name: "Gemini · Groq · Ollama" }, { name: "ChromaDB" }],
   },
   {
-    title: "Frontend",
-    skills: [
-      { name: "React" },
-      { name: "Next.js" },
-      { name: "Angular" },
-      { name: "Tailwind CSS" },
-      { name: "Vite" },
-      { name: "JavaFX" },
-    ],
+    title: "IA de confiance & sécurité",
+    skills: [{ name: "Garde-fous anti-injection" }, { name: "Signature HMAC" }, { name: "Piste d'audit" }, { name: "Tests adverses" }, { name: "Revue de sécurité" }],
   },
   {
-    title: "Backend",
-    skills: [
-      { name: "FastAPI" },
-      { name: "Spring Boot" },
-      { name: "Flask" },
-      { name: ".NET" },
-      { name: "Node.js" },
-      { name: "MySQL" },
-    ],
+    title: "Machine learning",
+    skills: [{ name: "XGBoost" }, { name: "SVM" }, { name: "scikit-learn" }, { name: "Clustering (KMeans, DBSCAN)" }, { name: "Séries temporelles (ARIMA)" }, { name: "MLflow" }],
   },
   {
-    title: "Data / AI",
-    skills: [
-      { name: "XGBoost" },
-      { name: "scikit-learn" },
-      { name: "LangChain" },
-      { name: "RAG / ChromaDB" },
-      { name: "LLMs / Gemini" },
-      { name: "Power BI" },
-    ],
+    title: "Data & BI",
+    skills: [{ name: "Power BI" }, { name: "Talend (ETL)" }, { name: "Data warehouse" }, { name: "SQL Server" }, { name: "MySQL · Oracle" }, { name: "n8n" }],
   },
   {
-    title: "DevOps / Tools",
-    skills: [
-      { name: "Git / GitHub" },
-      { name: "Talend / ETL" },
-      { name: "n8n" },
-      { name: "A2A / MCP" },
-      { name: "Maven" },
-    ],
+    title: "Cloud & déploiement",
+    skills: [{ name: "Azure" }, { name: "Docker / Compose" }, { name: "nginx" }, { name: "Git / GitHub" }],
+  },
+  {
+    title: "Langages & frameworks",
+    skills: [{ name: "Python" }, { name: "Java" }, { name: "TypeScript" }, { name: "SQL" }, { name: "C" }, { name: "FastAPI" }, { name: "Spring Boot" }, { name: "Node.js" }, { name: "React" }, { name: "Angular" }],
   },
 ];

@@ -64,11 +64,11 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
   if (!open) return null;
 
   const portfolioPrograms: MenuEntry[] = [
-    { id: "mycomputer", label: "My Computer", icon: <ComputerIcon size={16} />, appId: "mycomputer" },
-    { id: "about", label: "About Ala Dimassi", icon: <ComputerIcon size={16} />, appId: "about" },
-    { id: "projects", label: "My Projects", icon: <FolderIcon size={16} />, appId: "projects" },
-    { id: "skills", label: "Skills", icon: <ControlPanelIcon size={16} />, appId: "skills" },
-    { id: "experience", label: "Work History", icon: <BriefcaseIcon size={16} />, appId: "experience" },
+    { id: "mycomputer", label: "Poste de travail", icon: <ComputerIcon size={16} />, appId: "mycomputer" },
+    { id: "about", label: "À propos de moi", icon: <ComputerIcon size={16} />, appId: "about" },
+    { id: "projects", label: "Projets", icon: <FolderIcon size={16} />, appId: "projects" },
+    { id: "skills", label: "Compétences", icon: <ControlPanelIcon size={16} />, appId: "skills" },
+    { id: "experience", label: "Expérience", icon: <BriefcaseIcon size={16} />, appId: "experience" },
     { id: "contact", label: "Contact", icon: <MailIcon size={16} />, appId: "contact" },
   ];
 
@@ -86,7 +86,7 @@ export function StartMenu({ open, onClose, onShutdown, onRun }: StartMenuProps) 
 
   const accessories: MenuEntry[] = [
     { id: "notepad", label: "Notepad", icon: <NotepadIcon size={16} />, appId: "notepad" },
-    { id: "welcome", label: "Welcome.txt", icon: <NotepadIcon size={16} />, appId: "welcome" },
+    { id: "welcome", label: "Bienvenue.txt", icon: <NotepadIcon size={16} />, appId: "welcome" },
     { id: "paint", label: "Paint", icon: <NotepadIcon size={16} />, appId: "paint" },
     { id: "cmd", label: "MS-DOS Prompt", icon: <ComputerIcon size={16} />, appId: "cmd" },
     { id: "ie", label: "Internet Explorer", icon: <ComputerIcon size={16} />, appId: "ie" },

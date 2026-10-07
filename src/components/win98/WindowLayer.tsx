@@ -23,7 +23,7 @@ import { ExperienceApp } from "./apps/ExperienceApp";
 import { CvViewerApp, GuestbookApp } from "./apps/GuestbookApps";
 import { IEApp } from "./apps/IEApp";
 import { MinesweeperApp } from "./apps/MinesweeperApp";
-import { MyComputerApp } from "./apps/MyComputerApp";
+import { GamesApp, MyComputerApp } from "./apps/MyComputerApp";
 import { NetworkApp } from "./apps/NetworkApp";
 import { NotepadApp, RecycleApp, WelcomeApp } from "./apps/NotepadApps";
 import { BreakoutApp } from "./apps/BreakoutApp";
@@ -59,6 +59,7 @@ const APP_COMPONENTS: Record<AppId, ComponentType> = {
   invaders: InvadersApp,
   paint: PaintApp,
   mycomputer: MyComputerApp,
+  games: GamesApp,
   cmd: CmdApp,
   ie: IEApp,
   chat: ChatApp,
@@ -90,6 +91,7 @@ const WINDOW_ICONS: Record<AppId, ReactNode> = {
   invaders: <MinesweeperIcon size={16} />,
   paint: <NotepadIcon size={16} />,
   mycomputer: <ComputerIcon size={16} />,
+  games: <FolderIcon size={16} />,
   cmd: <ComputerIcon size={16} />,
   ie: <GlobeIcon />,
   chat: <MailIcon size={16} />,
@@ -111,7 +113,7 @@ function GlobeIcon() {
 }
 
 const STATUS: Partial<Record<AppId, string[]>> = {
-  welcome: ["Welcome to Ala Dimassi's Windows 98 PC"],
+  welcome: ["Ala Dimassi — PFE Data & IA"],
   notepad: ["Ln 1, Col 1"],
   projects: [`${projects.length} object(s)`, "C:\\Projects"],
   recycle: ["0 object(s)"],

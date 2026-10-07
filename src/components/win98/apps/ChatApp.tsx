@@ -1,41 +1,44 @@
 import { useState } from "react";
 import { profile } from "../../../data/profile";
-import { projects } from "../../../data/projects";
+import { featuredProjects } from "../../../data/projects";
 
 type Msg = { from: "ala" | "you"; text: string };
 
 const GREETINGS: Msg[] = [
-  { from: "ala", text: `Hey! 👋 I'm ${profile.name.split(" ")[0]}. Ask me about my projects, skills, or internships!` },
+  { from: "ala", text: `Salut ! 👋 Je suis ${profile.name.split(" ")[0]}. Posez-moi une question sur mes projets, mes stages, mes compétences ou mon PFE.` },
 ];
 
 function reply(input: string): string {
   const q = input.toLowerCase();
+  if (q.includes("pfe") || q.includes("recrut") || q.includes("dispo")) {
+    return `Je recherche un ${profile.target} : IA de confiance, automatisation de l'audit, analyse documentaire ou gestion des risques. Écrivez-moi : ${profile.email}`;
+  }
   if (q.includes("project") || q.includes("projet")) {
-    const names = projects.slice(0, 4).map((p) => p.title.split("—")[0]?.trim()).join(", ");
-    return `I have ${projects.length} projects on GitHub! Featured: ${names}... Open "My Projects" to explore.`;
+    const names = featuredProjects.map((p) => p.title.split("—")[0]?.trim()).join(", ");
+    return `Mes projets phares : ${names}. Ouvrez « Projets » pour les détails et les résultats.`;
   }
   if (q.includes("skill") || q.includes("compétence") || q.includes("tech")) {
-    return "Python, TypeScript, React, FastAPI, LangChain, RAG, XGBoost... Check Control Panel → Skills!";
+    return "LLM, RAG, LangGraph, systèmes multi-agents, XGBoost, scikit-learn, Power BI, Talend, Docker, Azure… Voir « Compétences ».";
   }
-  if (q.includes("stage") || q.includes("intern") || q.includes("experience")) {
-    return "Internships at Pixelium (A2A agent commerce) and Talan Tunisie (RAG/LLMs). See Work History!";
+  if (q.includes("stage") || q.includes("intern") || q.includes("exp")) {
+    return "Pixelium (2026) : agents IA avec consentement signé et piste d'audit. Talan Tunisie (2025) : LLM, RAG multimodal, multi-agents. Voir « Expérience ».";
   }
-  if (q.includes("contact") || q.includes("email") || q.includes("hire")) {
-    return `Email me: ${profile.email} — or use the Contact app / Guestbook!`;
+  if (q.includes("contact") || q.includes("email") || q.includes("mail")) {
+    return `Email : ${profile.email} · Tél : ${profile.phone}`;
   }
   if (q.includes("cv") || q.includes("resume")) {
-    return "Download my CV from the desktop or Documents menu!";
+    return "Mon CV est sur le bureau : « Mon CV ».";
   }
   if (q.includes("esprit") || q.includes("school") || q.includes("école")) {
     return profile.school;
   }
   if (q.includes("hello") || q.includes("salut") || q.includes("bonjour") || q.includes("hi")) {
-    return "Hello! Welcome to Ala Dimassi's Windows 98 desktop 😊 Type 'projects' or 'skills' to learn more.";
+    return "Bonjour ! Tapez « projets », « stages », « PFE » ou « contact ».";
   }
   if (q.includes("game") || q.includes("jeu")) {
-    return "Try Minesweeper, Snake, or Tetris from Start → Games!";
+    return "Les jeux sont dans Démarrer → Jeux, ou dans le dossier « Jeux » du bureau.";
   }
-  return "Hmm, try asking about: projects, skills, internships, contact, CV, or games!";
+  return "Essayez : projets, stages, compétences, PFE, contact ou CV.";
 }
 
 export function ChatApp() {

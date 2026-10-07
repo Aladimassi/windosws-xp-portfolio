@@ -1,15 +1,18 @@
 /**
- * Projets issus des dépôts publics GitHub d'Aladimassi.
- * Descriptions basées sur les README et la structure réelle des repos.
+ * Projets — les 4 projets phares (alignés avec le CV) d'abord,
+ * puis les projets académiques.
  */
 export type Project = {
   id: string;
   title: string;
   description: string;
+  /** Résultats chiffrés affichés en premier */
+  metrics?: string[];
   stack: string[];
   github: string;
   demo?: string;
   featured?: boolean;
+  academic?: boolean;
   category: "ai" | "fullstack" | "backend" | "embedded" | "data";
 };
 
@@ -18,142 +21,126 @@ export const projects: Project[] = [
     id: "pixelium",
     title: "Pixelium — Consent Commerce",
     description:
-      "Prototype de commerce agentique consent-aware : deux agents A2A (e-commerce + paiement) communiquent via un broker de consentement avec chaîne de mandats AP2 (Intent → Cart → Payment).",
-    stack: ["TypeScript", "Node.js", "A2A", "AP2", "Multi-Agent"],
+      "Agents IA qui font les achats pour l'utilisateur, mais ne paient jamais sans son consentement signé. Broker de consentement, chaîne de mandats Intent → Cart → Payment inspirée d'AP2, piste d'audit complète. Projet de stage (été 2026).",
+    metrics: [
+      "2 agents isolés + 1 broker, point de contrôle unique",
+      "3 mandats signés HMAC-SHA256",
+      "21 tests automatisés, dont tests adverses",
+      "Déployé sur Azure (Docker, HTTPS)",
+    ],
+    stack: ["Python", "LangGraph", "FastAPI", "Node.js", "TypeScript", "React", "Docker", "Azure"],
     github: "https://github.com/Aladimassi/Pixelium",
+    demo: "https://pixelium.duckdns.org",
     featured: true,
     category: "ai",
   },
   {
     id: "cryptoapp",
-    title: "Data Minds — Analyse Crypto & Client",
+    title: "Data Minds — IA crypto & segmentation client",
     description:
-      "Plateforme end-to-end combinant ML (XGBoost), IA (LangChain) et analyse de sentiments pour la prédiction des marchés crypto et la segmentation client.",
-    stack: ["Python", "FastAPI", "React", "XGBoost", "LangChain"],
+      "Plateforme end-to-end : prédiction du sens d'évolution des prix (XGBoost), segmentation des traders en profils de risque, analyse de sentiment des actualités et assistant RAG.",
+    metrics: [
+      "85,4 % d'accuracy (BTC), 76,6 % (ETH)",
+      "44 indicateurs techniques",
+      "50 000 traders segmentés (KMeans, DBSCAN)",
+      "−99 % de coûts d'API grâce au cache",
+    ],
+    stack: ["Python", "XGBoost", "scikit-learn", "LangChain", "ChromaDB", "FastAPI", "React"],
     github: "https://github.com/Aladimassi/CRYPTOAPP",
     featured: true,
     category: "ai",
   },
   {
     id: "murag1",
-    title: "MuRAG1 — Multi-Agent RAG",
+    title: "MuRAG — RAG agentique multimodal",
     description:
-      "Système RAG agentique avancé avec classification de requêtes, planification adaptative, auto-réflexion et traitement multimodal (PDF, images, OCR) via Gemini AI.",
-    stack: ["Python", "Gemini AI", "RAG", "LangChain", "Multimodal"],
+      "Analyse de documents (PDF, images, OCR) avec Gemini : classification des requêtes, planification par un agent, auto-réflexion et mémoire conversationnelle. Cas d'usage : revue de contrats, de pièces justificatives et de rapports.",
+    metrics: ["PDF, images et OCR", "Agent planificateur + auto-réflexion"],
+    stack: ["Python", "Gemini", "RAG", "OCR", "FastAPI"],
     github: "https://github.com/Aladimassi/murag1",
     featured: true,
     category: "ai",
   },
   {
-    id: "personal-budget",
-    title: "Coach Financier Intelligent",
+    id: "r-project",
+    title: "Prévision du prix de l'or",
     description:
-      "Application de coaching financier personnel : analyse budgétaire, décision d'achat instantanée (« Puis-je acheter ? »), plan d'épargne automatique et suggestions adaptées.",
-    stack: ["Python", "Flask", "HTML", "Gemini AI"],
-    github: "https://github.com/Aladimassi/personal-budget",
+      "Série temporelle en R : décomposition, tests de stationnarité (ADF, KPSS), modèles ARIMA/SARIMA, intervalles de confiance à 80 % et 95 %, dashboard R Shiny.",
+    metrics: ["Évaluation MAE, RMSE, MAPE", "Dashboard interactif Shiny"],
+    stack: ["R", "ARIMA/SARIMA", "Shiny"],
+    github: "https://github.com/Aladimassi/R-PROJECT",
     featured: true,
-    category: "ai",
+    category: "data",
+  },
+  {
+    id: "personal-budget",
+    title: "Coach financier intelligent",
+    description:
+      "Analyse budgétaire, aide à la décision d'achat (« Puis-je acheter ? »), plan d'épargne automatique et suggestions adaptées au budget restant.",
+    stack: ["Python", "Flask", "SQLite", "Pandas", "pytest"],
+    github: "https://github.com/Aladimassi/personal-budget",
+    academic: true,
+    category: "data",
   },
   {
     id: "taf-v2",
-    title: "TAV Airports — Gestion de Stock v2",
+    title: "TAV Airports — Gestion de stock",
     description:
-      "Système de gestion de stock multi-départements (Administration, Production, Qualité, Maintenance, Technique) avec dashboard, entrées/sorties et import Excel.",
-    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "XLSX"],
+      "Gestion de stock multi-départements (Administration, Production, Qualité, Maintenance) : entrées/sorties, import Excel et dashboard.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     github: "https://github.com/Aladimassi/taf-v2",
-    featured: true,
+    academic: true,
     category: "fullstack",
   },
   {
     id: "mindshift",
-    title: "MindShift",
+    title: "MindShift — Santé mentale",
     description:
-      "Application web React pour le bien-être mental : pages d'accueil, aide, dons et authentification (inscription/connexion). Interface moderne avec routing.",
-    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "React Router"],
+      "Plateforme de soutien en santé mentale (hackathon, 6e sur 32 équipes) : accueil, aide, dons et authentification.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     github: "https://github.com/Aladimassi/mindshift",
-    featured: true,
-    category: "fullstack",
-  },
-  {
-    id: "test-erp",
-    title: "Gestion des Jardins",
-    description:
-      "Application Angular CRUD pour la gestion des jardins (adresse, surface, date d'entrée, statut) avec validation, recherche et API JSON Server.",
-    stack: ["Angular 18", "TypeScript", "JSON Server"],
-    github: "https://github.com/Aladimassi/test-ala-dimassi-4bi-erp-4",
+    academic: true,
     category: "fullstack",
   },
   {
     id: "padelapp",
     title: "PadelApp",
-    description:
-      "Application desktop JavaFX de gestion de courts de padel avec connexion MySQL — interface graphique et persistance des données.",
+    description: "Application desktop JavaFX de gestion de courts de padel, avec persistance MySQL.",
     stack: ["Java", "JavaFX", "MySQL", "Maven"],
     github: "https://github.com/Aladimassi/padelapp",
+    academic: true,
     category: "fullstack",
-  },
-  {
-    id: "taf",
-    title: "TAV Airports — Gestion de Stock",
-    description:
-      "Première version du système de gestion de stock TAV Airports : accès par département, suivi entrées/sorties et dashboard statistiques.",
-    stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
-    github: "https://github.com/Aladimassi/taf",
-    category: "fullstack",
-  },
-  {
-    id: "mlprojectrrr",
-    title: "ML Project — Prédiction & RAG",
-    description:
-      "Projet ML combinant notebooks Jupyter, modèles de prédiction et pipeline RAG. Exploration de deep learning et régression.",
-    stack: ["Python", "Jupyter", "TypeScript", "RAG", "ML"],
-    github: "https://github.com/Aladimassi/mlprojectrrr",
-    category: "ai",
-  },
-  {
-    id: "r-project",
-    title: "Série Temporelle — Prix de l'Or",
-    description:
-      "Étude complète de série temporelle des prix de l'or en R : exploration, tests statistiques, modélisation ARIMA et application Shiny interactive.",
-    stack: ["R", "Shiny", "Time Series", "Forecasting"],
-    github: "https://github.com/Aladimassi/R-PROJECT",
-    category: "data",
   },
   {
     id: "la-gestion-de-zoo",
-    title: "Gestion de Zoo",
-    description:
-      "Application Java de gestion d'un parc zoologique — gestion des animaux, enclos et opérations du zoo (projet académique ESPRIT).",
-    stack: ["Java", "OOP", "Maven"],
+    title: "Gestion de zoo",
+    description: "Application Java orientée objet de gestion d'un parc zoologique (animaux, enclos, opérations).",
+    stack: ["Java", "POO", "Maven"],
     github: "https://github.com/Aladimassi/la-gestion-de-zoo",
+    academic: true,
     category: "backend",
   },
   {
     id: "parky",
-    title: "Parky — Application de Parking",
-    description:
-      "Application de gestion de parking développée en C avec interface GTK/Glade. Gestion des places et suivi des véhicules.",
+    title: "Parky — Gestion de parking",
+    description: "Application de gestion de parking en C avec interface GTK/Glade.",
     stack: ["C", "GTK", "Glade", "Linux"],
     github: "https://github.com/Aladimassi/parky",
+    academic: true,
     category: "embedded",
   },
   {
     id: "charging-stations",
-    title: "Stations de Recharge EV",
+    title: "Stations de recharge EV",
     description:
-      "Système embarqué de gestion de stations de recharge pour véhicules électriques — programmation bas niveau sur microcontrôleur PIC (C/Assembly).",
-    stack: ["C", "Assembly", "PIC", "Embedded"],
+      "Système embarqué de gestion de stations de recharge pour véhicules électriques sur microcontrôleur PIC (C / Assembleur).",
+    stack: ["C", "Assembleur", "PIC"],
     github:
       "https://github.com/Aladimassi/Syst-me-de-gestion-des-stations-de-recharge-de-v-hicules-lectriques",
+    academic: true,
     category: "embedded",
   },
-  {
-    id: "biii",
-    title: "Projet Business Intelligence",
-    description:
-      "Tableau de bord Power BI pour l'analyse et la visualisation de données métier (fichier .pbix).",
-    stack: ["Power BI", "DAX", "Data Visualization"],
-    github: "https://github.com/Aladimassi/BIII-",
-    category: "data",
-  },
 ];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+export const academicProjects = projects.filter((p) => p.academic);

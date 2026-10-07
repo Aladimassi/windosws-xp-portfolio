@@ -1,12 +1,11 @@
 import { profile } from "../../../data/profile";
-import { UserIcon } from "../icons";
 
 export function AboutApp() {
   return (
     <div className="w98-sysprops">
       <div className="w98-sysprops-tabs">
         <button type="button" className="w98-tab w98-tab--active">
-          General
+          Général
         </button>
         <button type="button" className="w98-tab" disabled>
           Device Manager
@@ -19,47 +18,59 @@ export function AboutApp() {
       <div className="w98-sysprops-body w98-inset">
         <div className="w98-sysprops-main">
           <div className="w98-sysprops-pc">
-            <UserIcon size={48} />
+            <img
+              src={profile.avatar}
+              alt={profile.name}
+              width={64}
+              height={64}
+              className="w98-inset"
+              style={{ objectFit: "cover", width: 64, height: 64 }}
+              onError={(e) => { e.currentTarget.style.display = "none"; }}
+            />
           </div>
           <div className="w98-sysprops-info">
             <div className="w98-sysprops-row">
-              <span className="w98-sysprops-label">Registered to:</span>
+              <span className="w98-sysprops-label">Nom :</span>
               <strong>{profile.name}</strong>
             </div>
             <div className="w98-sysprops-row">
-              <span className="w98-sysprops-label">Organization:</span>
-              <span>ESPRIT — Computer Science</span>
+              <span className="w98-sysprops-label">École :</span>
+              <span>ESPRIT — Cycle ingénieur</span>
             </div>
             <div className="w98-sysprops-row">
-              <span className="w98-sysprops-label">Role:</span>
+              <span className="w98-sysprops-label">Profil :</span>
               <span>{profile.title}</span>
             </div>
             <div className="w98-sysprops-row">
-              <span className="w98-sysprops-label">Location:</span>
+              <span className="w98-sysprops-label">Lieu :</span>
               <span>{profile.location}</span>
             </div>
-            <p className="w98-sysprops-desc">
-              Étudiant en ingénierie informatique passionné par l&apos;IA, le machine
-              learning et le full-stack. Stages chez Pixelium (A2A agent commerce) et
-              Talan Tunisie (RAG, LLMs).
-            </p>
+            <p className="w98-sysprops-desc">{profile.tagline}</p>
+            <div className="w98-sysprops-row">
+              <span className="w98-sysprops-label">Recherche :</span>
+              <strong>{profile.target}</strong>
+            </div>
+            <div className="w98-sysprops-row">
+              <span className="w98-sysprops-label">Langues :</span>
+              <span>{profile.languages}</span>
+            </div>
           </div>
         </div>
 
         <fieldset className="w98-fieldset w98-sysprops-specs">
-          <legend>System</legend>
+          <legend>Compétences clés</legend>
           <div className="w98-spec-grid">
             <div className="w98-spec-item">
-              <span>CPU:</span> Python · Java · TypeScript
+              <span>IA :</span> LLM · RAG · multi-agents
             </div>
             <div className="w98-spec-item">
-              <span>RAM:</span> React · FastAPI · LangChain
+              <span>ML :</span> XGBoost · scikit-learn · MLflow
             </div>
             <div className="w98-spec-item">
-              <span>GPU:</span> XGBoost · Gemini · RAG
+              <span>Data :</span> Power BI · Talend · SQL
             </div>
             <div className="w98-spec-item">
-              <span>OS:</span> Microsoft Windows 98
+              <span>Cloud :</span> Azure · Docker
             </div>
           </div>
         </fieldset>

@@ -56,9 +56,9 @@ function ItemIcon({ type, size = 32 }: { type: Item["icon"]; size?: number }) {
   return <FolderIcon size={size} />;
 }
 
-export function MyComputerApp() {
+export function MyComputerApp({ initialView = "root" }: { initialView?: string } = {}) {
   const { openWindow } = useWindowManager();
-  const [view, setView] = useState("root");
+  const [view, setView] = useState(initialView);
   const current = VIEWS[view] ?? VIEWS.root;
 
   const goUp = () => {
@@ -89,7 +89,7 @@ export function MyComputerApp() {
         </span>
       </div>
 
-      <p className="w98-mycomputer-hint">Double-click an item to open.</p>
+      <p className="w98-mycomputer-hint">Double-cliquez sur un élément pour l'ouvrir.</p>
 
       <fieldset className="w98-fieldset">
         <legend>{current.title}</legend>
@@ -112,4 +112,9 @@ export function MyComputerApp() {
       </fieldset>
     </div>
   );
+}
+
+/** Desktop "Jeux" folder: My Computer opened directly on C:\\Games. */
+export function GamesApp() {
+  return <MyComputerApp initialView="c:/games" />;
 }

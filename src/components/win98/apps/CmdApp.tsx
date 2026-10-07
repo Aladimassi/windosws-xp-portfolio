@@ -8,8 +8,8 @@ type Line = { type: "in" | "out" | "err"; text: string };
 export function CmdApp({ onBsod }: { onBsod?: () => void }) {
   const { openWindow } = useWindowManager();
   const [lines, setLines] = useState<Line[]>([
-    { type: "out", text: "Microsoft(R) Windows 98" },
-    { type: "out", text: "   (C) Copyright Microsoft Corp 1981-1998." },
+    { type: "out", text: "Ala OS 98 — Portfolio de Ala Dimassi" },
+    { type: "out", text: "   Projet personnel inspiré de l'interface Windows 98." },
     { type: "out", text: "" },
     { type: "out", text: 'Type "help" for commands.' },
     { type: "out", text: "" },
@@ -82,7 +82,7 @@ export function CmdApp({ onBsod }: { onBsod?: () => void }) {
           { type: "out", text: profile.school },
         ]);
       } else if (lower === "ver") {
-        append([{ type: "out", text: "Microsoft Windows 98 [Version 4.10.1998]" }]);
+        append([{ type: "out", text: "Ala OS 98 [Version 2026.10]" }]);
         append([{ type: "out", text: "Registered to: Ala Dimassi" }]);
       } else if (lower === "date" || lower === "time") {
         append([{ type: "out", text: new Date().toLocaleString("fr-FR") }]);

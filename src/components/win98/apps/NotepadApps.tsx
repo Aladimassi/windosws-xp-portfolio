@@ -1,32 +1,26 @@
 import { profile } from "../../../data/profile";
 
-const WELCOME_TEXT = `╔══════════════════════════════════════════╗
-║      Welcome to Ala Dimassi's PC         ║
-║            Microsoft Windows 98           ║
-╚══════════════════════════════════════════╝
+const WELCOME_TEXT = `BIENVENUE SUR LE PC DE ALA
+══════════════════════════
 
-Hello! I'm ${profile.name}.
-${profile.title}
+${profile.name} — ${profile.title}
+${profile.location} · ESPRIT, cycle ingénieur en informatique
 
-Location: ${profile.location}
-School:   ESPRIT — Computer Science Engineering
-Web:      ${profile.website}
-Short:    ${profile.websiteShort}
+EN BREF
+  • Stage Pixelium (2026) : agents IA qui achètent
+    uniquement avec le consentement signé de
+    l'utilisateur — piste d'audit, 21 tests, Azure.
+  • Stage Talan Tunisie (2025) : LLM, RAG
+    multimodal, systèmes multi-agents.
+  • Projets : ML (XGBoost, 85 % sur BTC),
+    RAG agentique, séries temporelles, BI.
 
-────────────────────────────────────────────
+RECRUTEUR PRESSÉ ?
+  → Double-cliquez sur [Vue recruteur]
+    pour une version classique en une page.
+  → [Mon CV] pour télécharger le CV.
 
-EXPLORE THE DESKTOP:
-
-  [About Ala Dimassi] → System Properties & bio
-  [My Projects]   → GitHub repos (Explorer)
-  [Skills]        → Control Panel applets
-  [Work History]  → Internships & experience
-  [Contact]       → Send me a message
-  [My CV]         → Download resume
-
-TIP: Use the Start menu or double-click icons.
-
-Thanks for visiting — enjoy the nostalgia!
+Contact : ${profile.email}
 `;
 
 export function WelcomeApp() {

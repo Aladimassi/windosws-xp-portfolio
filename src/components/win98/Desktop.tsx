@@ -6,7 +6,7 @@ import { type AppId, useWindowManager } from "../../hooks/useWindowManager";
 import { playClickSound, playStartupSound } from "../../lib/sounds";
 import { BSOD } from "./BSOD";
 import { BlissWallpaper, TealWallpaper } from "./BlissWallpaper";
-import { BootScreen } from "./BootScreen";
+import { BootScreen, hasBootedThisSession } from "./BootScreen";
 import { CloudWallpaper } from "./CloudWallpaper";
 import { ContextMenu, type ContextMenuItem } from "./ContextMenu";
 import { DesktopIcon } from "./DesktopIcon";
@@ -16,10 +16,11 @@ import {
   ControlPanelIcon,
   DocumentIcon,
   FolderIcon,
+  InfoIcon,
   MailIcon,
   MinesweeperIcon,
-  NotepadIcon,
   RecycleIcon,
+  UserIcon,
 } from "./icons";
 import { RunDialog } from "./RunDialog";
 import { ScreenSaver } from "./ScreenSaver";
@@ -36,35 +37,37 @@ type DesktopItem = {
   action?: () => void;
 };
 
+export const RECRUITER_URL = "/?mode=recruteur";
+
 const DESKTOP_ITEMS: DesktopItem[] = [
-  { id: "mycomputer", label: "My Computer", icon: <ComputerIcon />, appId: "mycomputer" },
-  { id: "about", label: "About Ala Dimassi", icon: <ComputerIcon />, appId: "about" },
-  { id: "projects", label: "My Projects", icon: <FolderIcon />, appId: "projects" },
-  { id: "ie", label: "Internet Explorer", icon: <GlobeDesktopIcon />, appId: "ie" },
-  { id: "chat", label: "MSN Messenger", icon: <MailIcon />, appId: "chat" },
-  { id: "skills", label: "Skills", icon: <ControlPanelIcon />, appId: "skills" },
-  { id: "experience", label: "Work History", icon: <BriefcaseIcon />, appId: "experience" },
+  {
+    id: "recruiter",
+    label: "Vue recruteur",
+    icon: <UserIcon size={32} />,
+    action: () => { window.location.href = RECRUITER_URL; },
+  },
+  { id: "about", label: "À propos de moi", icon: <InfoIcon />, appId: "about" },
+  { id: "projects", label: "Projets", icon: <FolderIcon />, appId: "projects" },
+  { id: "experience", label: "Expérience", icon: <BriefcaseIcon />, appId: "experience" },
+  { id: "skills", label: "Compétences", icon: <ControlPanelIcon />, appId: "skills" },
+  { id: "cv", label: "Mon CV", icon: <DocumentIcon />, appId: "cvviewer" },
   { id: "contact", label: "Contact", icon: <MailIcon />, appId: "contact" },
   {
-    id: "website",
-    label: "My Website",
+    id: "linkedin",
+    label: "LinkedIn",
     icon: <GlobeDesktopIcon />,
-    action: () => window.open(profile.website, "_blank", "noopener,noreferrer"),
+    action: () => window.open(profile.linkedin, "_blank", "noopener,noreferrer"),
   },
-  { id: "minesweeper", label: "Minesweeper", icon: <MinesweeperIcon />, appId: "minesweeper" },
-  { id: "paint", label: "Paint", icon: <NotepadIcon />, appId: "paint" },
-  { id: "cmd", label: "MS-DOS Prompt", icon: <ComputerIcon />, appId: "cmd" },
-  { id: "network", label: "Network", icon: <ComputerIcon />, appId: "network" },
-  { id: "guestbook", label: "Guestbook", icon: <NotepadIcon />, appId: "guestbook" },
   {
-    id: "cv",
-    label: "My CV",
-    icon: <DocumentIcon />,
-    action: () => {},
-    appId: "cvviewer",
+    id: "github",
+    label: "GitHub",
+    icon: <GlobeDesktopIcon />,
+    action: () => window.open(profile.github, "_blank", "noopener,noreferrer"),
   },
-  { id: "readme", label: "readme.txt", icon: <NotepadIcon />, appId: "notepad" },
-  { id: "recycle", label: "Recycle Bin", icon: <RecycleIcon />, appId: "recycle" },
+  { id: "games", label: "Jeux", icon: <MinesweeperIcon />, appId: "games" },
+  { id: "mycomputer", label: "Mon PC", icon: <ComputerIcon />, appId: "mycomputer" },
+  { id: "chat", label: "MSN Messenger", icon: <MailIcon />, appId: "chat" },
+  { id: "recycle", label: "Corbeille", icon: <RecycleIcon />, appId: "recycle" },
 ];
 
 function GlobeDesktopIcon() {
@@ -78,15 +81,15 @@ function GlobeDesktopIcon() {
 }
 
 function defaultIconPos(index: number) {
-  const col = Math.floor(index / 8);
-  const row = index % 8;
-  return { x: 8 + col * 80, y: 8 + row * 76 };
+  const col = Math.floor(index / 7);
+  const row = index % 7;
+  return { x: 8 + col * 92, y: 8 + row * 78 };
 }
 
 export function Win98Desktop() {
   const { openWindow } = useWindowManager();
   const { wallpaper, sounds, iconPositions, updateIconPosition, screensaverMinutes } = useSettings();
-  const [booting, setBooting] = useState(true);
+  const [booting, setBooting] = useState(() => !hasBootedThisSession());
   const [startOpen, setStartOpen] = useState(false);
   const [shutdownOpen, setShutdownOpen] = useState(false);
   const [runOpen, setRunOpen] = useState(false);
@@ -124,6 +127,12 @@ export function Win98Desktop() {
     openWindow("welcome");
   }, [openWindow, sounds]);
 
+  // Boot already seen this session: go straight to the desktop with the welcome window.
+  useEffect(() => {
+    if (!booting) openWindow("welcome");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const closeContextMenu = useCallback(() => setContextMenu(null), []);
 
   const openContextMenu = useCallback((x: number, y: number, target: "desktop" | DesktopItem) => {
@@ -150,7 +159,7 @@ export function Win98Desktop() {
       snake: "snake", tetris: "tetris", solitaire: "solitaire",
       pong: "pong", breakout: "breakout", "2048": "game2048", game2048: "game2048",
       memory: "memory", invaders: "invaders", paint: "paint",
-      cmd: "cmd", command: "cmd", ie: "ie", iexplore: "ie", chat: "chat", msn: "chat",
+      cmd: "cmd", command: "cmd", ie: "ie", jeux: "games", games: "games", iexplore: "ie", chat: "chat", msn: "chat",
       guestbook: "guestbook", cv: "cvviewer", display: "display", network: "network",
       sysmon: "sysmon", assistant: "assistant", mycomputer: "mycomputer", computer: "mycomputer",
     };
@@ -162,8 +171,7 @@ export function Win98Desktop() {
   };
 
   const handleOpen = (item: DesktopItem) => {
-    if (item.id === "cv") openWindow("cvviewer");
-    else if (item.action && !item.appId) item.action();
+    if (item.action && !item.appId) item.action();
     else if (item.appId) openWindow(item.appId);
   };
 
@@ -198,6 +206,7 @@ export function Win98Desktop() {
       { id: "ie", label: "Internet Explorer", onClick: () => openWindow("ie") },
     ]},
     { id: "sep3", separator: true, label: "" },
+    { id: "recruiter", label: "Vue recruteur", onClick: () => { window.location.href = RECRUITER_URL; } },
     { id: "props", label: "Propriétés", onClick: () => openWindow("about") },
   ];
 

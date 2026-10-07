@@ -21,7 +21,7 @@ type Settings = {
   screensaverMinutes: number;
 };
 
-const STORAGE_KEY = "portfolioos98-settings";
+const STORAGE_KEY = "portfolioos98-settings-v2";
 
 const DEFAULT: Settings = {
   wallpaper: "clouds",

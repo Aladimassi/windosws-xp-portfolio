@@ -5,11 +5,10 @@ type IconProps = { size?: number; className?: string };
 export function WinLogo({ size = 16, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" className={className} aria-hidden>
-      <rect x="1" y="1" width="6" height="6" fill="#ff0000" />
-      <rect x="9" y="1" width="6" height="6" fill="#00a651" />
-      <rect x="1" y="9" width="6" height="6" fill="#0078d7" />
-      <rect x="9" y="9" width="6" height="6" fill="#ffcc00" />
-      <rect x="1" y="1" width="6" height="6" fill="none" stroke="#000" strokeWidth="0.5" opacity="0.3" />
+      <rect x="0.5" y="0.5" width="15" height="15" fill="#000080" stroke="#000" strokeWidth="1" />
+      <rect x="1.5" y="1.5" width="13" height="1" fill="#4a5bd4" />
+      <path d="M4 13 L7 3 H9 L12 13 H10 L9.3 10.6 H6.7 L6 13 Z M7.2 8.9 H8.8 L8 6 Z" fill="#ffffff" />
+      <rect x="11.5" y="2.5" width="2" height="2" fill="#e94560" />
     </svg>
   );
 }

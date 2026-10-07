@@ -4,7 +4,7 @@ export type AppId =
   | "snake" | "tetris" | "solitaire" | "pong" | "breakout" | "game2048" | "memory" | "invaders"
   | "paint" | "mycomputer" | "cmd"
   | "ie" | "chat" | "cvviewer" | "guestbook" | "display" | "network"
-  | "sysmon" | "assistant";
+  | "sysmon" | "assistant" | "games";
 
 export type WindowConfig = {
   id: AppId;
@@ -16,11 +16,11 @@ export type WindowConfig = {
 };
 
 export const WINDOW_CONFIGS: Record<AppId, WindowConfig> = {
-  welcome: { id: "welcome", title: "Welcome.txt — Notepad", defaultWidth: 420, defaultHeight: 320, defaultX: 80, defaultY: 40 },
-  about: { id: "about", title: "System Properties — Ala Dimassi", defaultWidth: 480, defaultHeight: 380, defaultX: 120, defaultY: 60 },
-  projects: { id: "projects", title: "C:\\Projects", defaultWidth: 580, defaultHeight: 420, defaultX: 160, defaultY: 80 },
-  skills: { id: "skills", title: "Control Panel — Skills", defaultWidth: 440, defaultHeight: 360, defaultX: 200, defaultY: 100 },
-  experience: { id: "experience", title: "Work History", defaultWidth: 460, defaultHeight: 380, defaultX: 140, defaultY: 70 },
+  welcome: { id: "welcome", title: "Bienvenue.txt — Bloc-notes", defaultWidth: 470, defaultHeight: 520, defaultX: 200, defaultY: 30 },
+  about: { id: "about", title: "À propos — Ala Dimassi", defaultWidth: 520, defaultHeight: 470, defaultX: 120, defaultY: 60 },
+  projects: { id: "projects", title: "C:\\Projects", defaultWidth: 660, defaultHeight: 470, defaultX: 160, defaultY: 80 },
+  skills: { id: "skills", title: "Compétences", defaultWidth: 440, defaultHeight: 360, defaultX: 200, defaultY: 100 },
+  experience: { id: "experience", title: "Expérience", defaultWidth: 520, defaultHeight: 460, defaultX: 140, defaultY: 70 },
   contact: { id: "contact", title: "Internet Mail — Contact", defaultWidth: 400, defaultHeight: 340, defaultX: 180, defaultY: 90 },
   notepad: { id: "notepad", title: "readme.txt — Notepad", defaultWidth: 400, defaultHeight: 300, defaultX: 220, defaultY: 120 },
   recycle: { id: "recycle", title: "Recycle Bin", defaultWidth: 360, defaultHeight: 240, defaultX: 260, defaultY: 140 },
@@ -43,6 +43,7 @@ export const WINDOW_CONFIGS: Record<AppId, WindowConfig> = {
   display: { id: "display", title: "Display Properties", defaultWidth: 400, defaultHeight: 340, defaultX: 180, defaultY: 80 },
   network: { id: "network", title: "Network Neighborhood", defaultWidth: 440, defaultHeight: 360, defaultX: 160, defaultY: 75 },
   sysmon: { id: "sysmon", title: "System Monitor — GitHub", defaultWidth: 400, defaultHeight: 320, defaultX: 190, defaultY: 85 },
+  games: { id: "games", title: "Jeux", defaultWidth: 460, defaultHeight: 340, defaultX: 140, defaultY: 70 },
   assistant: { id: "assistant", title: "Portfolio Assistant", defaultWidth: 380, defaultHeight: 400, defaultX: 210, defaultY: 65 },
 };
 

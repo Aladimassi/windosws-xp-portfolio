@@ -11,7 +11,7 @@ export function ShutdownDialog({ onClose, onRestart }: ShutdownDialogProps) {
       <div className="w98-dialog w98-outset">
         <div className="w98-titlebar active">
           <span className="w98-titlebar-text" id="shutdown-title">
-            Shut Down Windows 98
+            Arrêter Ala OS 98
           </span>
         </div>
         <div className="w98-dialog-body">

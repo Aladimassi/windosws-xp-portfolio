@@ -1,13 +1,13 @@
 import { skillCategories } from "../../../data/skills";
 import { ControlPanelIcon } from "../icons";
 
-const CATEGORY_ICONS = ["💻", "🎨", "⚙️", "🧠", "🔧"];
+const CATEGORY_ICONS = ["🧠", "🛡️", "📈", "📊", "☁️", "💻"];
 
 export function SkillsApp() {
   return (
     <div className="w98-cpanel">
       <p className="w98-cpanel-intro">
-        Pick an applet to view or configure a portfolio setting.
+        Compétences techniques, regroupées par domaine.
       </p>
       <div className="w98-cpanel-grid">
         {skillCategories.map((cat, i) => (
