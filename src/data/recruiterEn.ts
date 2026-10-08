@@ -62,10 +62,9 @@ export const projectsEn: Record<string, { title: string; description: string; me
     description:
       "End-to-end platform: price-direction prediction (XGBoost), trader risk segmentation, news sentiment analysis and a RAG assistant.",
     metrics: [
-      "85.4% accuracy (BTC), 76.6% (ETH)",
-      "44 technical indicators",
-      "50,000 traders segmented (KMeans, DBSCAN)",
-      "−99% API costs thanks to caching",
+      "Up/down price classification with XGBoost",
+      "Trader segmentation (KMeans, DBSCAN)",
+      "News sentiment analysis with caching",
     ],
   },
   murag1: {

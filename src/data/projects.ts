@@ -40,10 +40,9 @@ export const projects: Project[] = [
     description:
       "Plateforme end-to-end : prédiction du sens d'évolution des prix (XGBoost), segmentation des traders en profils de risque, analyse de sentiment des actualités et assistant RAG.",
     metrics: [
-      "85,4 % d'accuracy (BTC), 76,6 % (ETH)",
-      "44 indicateurs techniques",
-      "50 000 traders segmentés (KMeans, DBSCAN)",
-      "−99 % de coûts d'API grâce au cache",
+      "Classification haussier/baissier avec XGBoost",
+      "Segmentation des traders (KMeans, DBSCAN)",
+      "Analyse de sentiment des actualités avec cache",
     ],
     stack: ["Python", "XGBoost", "scikit-learn", "LangChain", "ChromaDB", "FastAPI", "React"],
     github: "https://github.com/Aladimassi/CRYPTOAPP",
