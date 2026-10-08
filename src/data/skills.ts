@@ -12,10 +12,6 @@ export const skillCategories: SkillCategory[] = [
     skills: [{ name: "RAG / RAG multimodal" }, { name: "LangChain" }, { name: "LangGraph" }, { name: "Multi-agents (A2A, MCP)" }, { name: "Gemini · Groq · Ollama" }, { name: "ChromaDB" }],
   },
   {
-    title: "IA de confiance & sécurité",
-    skills: [{ name: "Garde-fous anti-injection" }, { name: "Signature HMAC" }, { name: "Piste d'audit" }, { name: "Tests adverses" }, { name: "Revue de sécurité" }],
-  },
-  {
     title: "Machine learning",
     skills: [{ name: "XGBoost" }, { name: "SVM" }, { name: "scikit-learn" }, { name: "Clustering (KMeans, DBSCAN)" }, { name: "Séries temporelles (ARIMA)" }, { name: "MLflow" }],
   },

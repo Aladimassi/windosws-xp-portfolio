@@ -7,7 +7,7 @@ export const profileEn = {
   location: "Monastir, Tunisia",
   languages: "Arabic (native) · French (B2) · English (B2)",
   tagline:
-    "Computer science engineering student at ESPRIT, I build AI solutions that are reliable, traceable and deployed: LLMs, multimodal RAG, multi-agent systems, machine learning and BI. I am looking for a final-year internship in Data & AI: trustworthy AI, audit automation, document analysis or risk management.",
+    "Computer science engineering student at ESPRIT, interested in applied AI: LLMs, RAG, multi-agent systems, machine learning and BI. I did two internships on these topics (Talan, Pixelium) and I am looking for a final-year internship in Data & AI for 2027.",
 };
 
 export const experiencesEn: Experience[] = [
@@ -19,12 +19,12 @@ export const experiencesEn: Experience[] = [
     description:
       "Pixelium Consent Commerce: an e-commerce platform where AI agents shop on the user's behalf, but only with their explicit consent (human-in-the-loop, inspired by the AP2 protocol).",
     highlights: [
-      "Multi-agent architecture: 2 Python agents (LangGraph, FastAPI) isolated behind a Node.js consent broker acting as the single point of control (A2A pattern).",
-      "Chain of 3 HMAC-SHA256 signed mandates (Intent → Cart → Payment): no transaction without the user's explicit approval.",
-      "Full audit trail: every mandate and broker operation is logged and viewable in an audit dashboard.",
-      "Conversational RAG assistant (Groq LLM, MiniLM embeddings) with input and output prompt-injection guardrails.",
-      "21 automated tests including adversarial ones; security review that found a critical issue (hard-coded JWT secret).",
-      "Deployed on an Azure VM (Docker Compose, nginx HTTPS, Let's Encrypt).",
+      "Multi-agent architecture: 2 Python agents (LangGraph, FastAPI) that go through a Node.js consent broker for every action.",
+      "3 HMAC-SHA256 signed mandates (Intent → Cart → Payment), so no payment happens without the user's approval.",
+      "Mandates and broker operations logged in MySQL and shown in an audit dashboard.",
+      "RAG assistant (Groq LLM, MiniLM embeddings) with basic prompt-injection checks.",
+      "21 automated tests; a security review led me to fix a hard-coded JWT secret.",
+      "Deployed on an Azure VM (Docker Compose, nginx, HTTPS).",
     ],
     technologies: ["Python", "LangGraph", "FastAPI", "Node.js", "TypeScript", "React", "MySQL", "Docker", "Azure"],
   },
@@ -49,18 +49,18 @@ export const projectsEn: Record<string, { title: string; description: string; me
   pixelium: {
     title: "Pixelium — Consent Commerce",
     description:
-      "AI agents that shop for the user but never pay without signed consent. Consent broker, AP2-inspired Intent → Cart → Payment mandate chain, full audit trail. Internship project (summer 2026).",
+      "Internship project (summer 2026): AI agents that shop for the user but need their signed consent before paying. Consent broker, AP2-inspired mandates (Intent → Cart → Payment) and action logging.",
     metrics: [
-      "2 isolated agents + 1 broker, single point of control",
+      "2 agents + 1 consent broker",
       "3 HMAC-SHA256 signed mandates",
-      "21 automated tests, including adversarial tests",
+      "21 automated tests",
       "Deployed on Azure (Docker, HTTPS)",
     ],
   },
   cryptoapp: {
     title: "Data Minds — Crypto AI & customer segmentation",
     description:
-      "End-to-end platform: price-direction prediction (XGBoost), trader risk segmentation, news sentiment analysis and a RAG assistant.",
+      "Project combining price-direction prediction (XGBoost), trader segmentation, news sentiment analysis and a RAG assistant.",
     metrics: [
       "Up/down price classification with XGBoost",
       "Trader segmentation (KMeans, DBSCAN)",
@@ -70,7 +70,7 @@ export const projectsEn: Record<string, { title: string; description: string; me
   murag1: {
     title: "MuRAG — Agentic multimodal RAG",
     description:
-      "Document analysis (PDF, images, OCR) with Gemini: query classification, agent planning, self-reflection and conversation memory. Use cases: reviewing contracts, supporting documents and reports.",
+      "Question answering over documents (PDF, images, OCR) with Gemini: query classification, a planning agent, self-reflection and conversation memory.",
     metrics: ["PDF, images and OCR", "Planning agent + self-reflection"],
   },
   "r-project": {
@@ -83,7 +83,6 @@ export const projectsEn: Record<string, { title: string; description: string; me
 
 export const skillTitlesEn: Record<string, string> = {
   "IA & LLM": "AI & LLMs",
-  "IA de confiance & sécurité": "Trustworthy AI & security",
   "Machine learning": "Machine learning",
   "Data & BI": "Data & BI",
   "Cloud & déploiement": "Cloud & deployment",

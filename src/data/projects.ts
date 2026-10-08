@@ -21,11 +21,11 @@ export const projects: Project[] = [
     id: "pixelium",
     title: "Pixelium — Consent Commerce",
     description:
-      "Agents IA qui font les achats pour l'utilisateur, mais ne paient jamais sans son consentement signé. Broker de consentement, chaîne de mandats Intent → Cart → Payment inspirée d'AP2, piste d'audit complète. Projet de stage (été 2026).",
+      "Projet de stage (été 2026) : des agents IA font les achats pour l'utilisateur, mais doivent obtenir son consentement signé avant de payer. Broker de consentement, mandats Intent → Cart → Payment inspirés d'AP2 et journalisation des actions.",
     metrics: [
-      "2 agents isolés + 1 broker, point de contrôle unique",
+      "2 agents + 1 broker de consentement",
       "3 mandats signés HMAC-SHA256",
-      "21 tests automatisés, dont tests adverses",
+      "21 tests automatisés",
       "Déployé sur Azure (Docker, HTTPS)",
     ],
     stack: ["Python", "LangGraph", "FastAPI", "Node.js", "TypeScript", "React", "Docker", "Azure"],
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     id: "cryptoapp",
     title: "Data Minds — IA crypto & segmentation client",
     description:
-      "Plateforme end-to-end : prédiction du sens d'évolution des prix (XGBoost), segmentation des traders en profils de risque, analyse de sentiment des actualités et assistant RAG.",
+      "Projet qui combine prédiction du sens d'évolution des prix (XGBoost), segmentation des traders, analyse de sentiment des actualités et un assistant RAG.",
     metrics: [
       "Classification haussier/baissier avec XGBoost",
       "Segmentation des traders (KMeans, DBSCAN)",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     id: "murag1",
     title: "MuRAG — RAG agentique multimodal",
     description:
-      "Analyse de documents (PDF, images, OCR) avec Gemini : classification des requêtes, planification par un agent, auto-réflexion et mémoire conversationnelle. Cas d'usage : revue de contrats, de pièces justificatives et de rapports.",
+      "Questions-réponses sur des documents (PDF, images, OCR) avec Gemini : classification des requêtes, agent planificateur, auto-réflexion et mémoire de conversation.",
     metrics: ["PDF, images et OCR", "Agent planificateur + auto-réflexion"],
     stack: ["Python", "Gemini", "RAG", "OCR", "FastAPI"],
     github: "https://github.com/Aladimassi/murag1",

@@ -18,12 +18,12 @@ export const experiences: Experience[] = [
     description:
       "Pixelium Consent Commerce : plateforme e-commerce où des agents IA achètent pour l'utilisateur, uniquement avec son consentement explicite (human-in-the-loop, inspiré du protocole AP2).",
     highlights: [
-      "Architecture multi-agents : 2 agents Python (LangGraph, FastAPI) isolés derrière un broker de consentement Node.js, point de contrôle unique (pattern A2A).",
-      "Chaîne de 3 mandats signés HMAC-SHA256 (Intent → Cart → Payment) : aucune transaction sans validation explicite de l'utilisateur.",
-      "Piste d'audit complète : chaque mandat et opération journalisés en base, consultables dans un dashboard d'audit.",
-      "Assistant conversationnel RAG (Groq LLM, embeddings MiniLM) avec garde-fous anti-injection en entrée et en sortie.",
-      "21 tests automatisés dont des tests adverses ; revue de sécurité ayant détecté une faille critique (secret JWT codé en dur).",
-      "Déploiement sur VM Azure (Docker Compose, nginx HTTPS, Let's Encrypt).",
+      "Architecture multi-agents : 2 agents Python (LangGraph, FastAPI) qui passent par un broker de consentement Node.js pour chaque action.",
+      "3 mandats signés HMAC-SHA256 (Intent → Cart → Payment) : aucun paiement sans validation de l'utilisateur.",
+      "Mandats et opérations du broker journalisés dans MySQL et affichés dans un dashboard d'audit.",
+      "Assistant RAG (Groq LLM, embeddings MiniLM) avec des contrôles simples contre la prompt injection.",
+      "21 tests automatisés ; une revue de sécurité m'a permis de corriger un secret JWT codé en dur.",
+      "Déploiement sur une VM Azure (Docker Compose, nginx, HTTPS).",
     ],
     technologies: ["Python", "LangGraph", "FastAPI", "Node.js", "TypeScript", "React", "MySQL", "Docker", "Azure"],
   },

@@ -11,7 +11,7 @@ const GREETINGS: Msg[] = [
 function reply(input: string): string {
   const q = input.toLowerCase();
   if (q.includes("pfe") || q.includes("recrut") || q.includes("dispo")) {
-    return `Je recherche un ${profile.target} : IA de confiance, automatisation de l'audit, analyse documentaire ou gestion des risques. Écrivez-moi : ${profile.email}`;
+    return `Je recherche un ${profile.target}. Écrivez-moi : ${profile.email}`;
   }
   if (q.includes("project") || q.includes("projet")) {
     const names = featuredProjects.map((p) => p.title.split("—")[0]?.trim()).join(", ");
@@ -21,7 +21,7 @@ function reply(input: string): string {
     return "LLM, RAG, LangGraph, systèmes multi-agents, XGBoost, scikit-learn, Power BI, Talend, Docker, Azure… Voir « Compétences ».";
   }
   if (q.includes("stage") || q.includes("intern") || q.includes("exp")) {
-    return "Pixelium (2026) : agents IA avec consentement signé et piste d'audit. Talan Tunisie (2025) : LLM, RAG multimodal, multi-agents. Voir « Expérience ».";
+    return "Pixelium (2026) : agents IA qui demandent le consentement signé de l'utilisateur. Talan Tunisie (2025) : LLM, RAG multimodal, multi-agents. Voir « Expérience ».";
   }
   if (q.includes("contact") || q.includes("email") || q.includes("mail")) {
     return `Email : ${profile.email} · Tél : ${profile.phone}`;

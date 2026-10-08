@@ -5,7 +5,7 @@ export const profile = {
   name: "Ala Dimassi",
   title: "Élève ingénieur IA & Data · En recherche de PFE",
   tagline:
-    "Élève ingénieur en informatique à ESPRIT, je construis des solutions d'IA fiables, traçables et déployées : LLM, RAG multimodal, systèmes multi-agents, machine learning et BI. Je recherche un PFE en Data & IA : IA de confiance, automatisation de l'audit, analyse documentaire ou gestion des risques.",
+    "Élève ingénieur en informatique à ESPRIT, je m'intéresse à l'IA appliquée : LLM, RAG, systèmes multi-agents, machine learning et BI. J'ai fait deux stages sur ces sujets (Talan, Pixelium) et je recherche un PFE en Data & IA pour 2027.",
   target: "PFE Data & IA — 2027",
   location: "Monastir, Tunisie",
   school: "ESPRIT — Cycle ingénieur en informatique (2024 — aujourd'hui)",

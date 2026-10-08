@@ -9,11 +9,11 @@ ${profile.location} · ESPRIT, cycle ingénieur en informatique
 EN BREF
   • Stage Pixelium (2026) : agents IA qui achètent
     uniquement avec le consentement signé de
-    l'utilisateur — piste d'audit, 21 tests, Azure.
+    l'utilisateur — journalisation, tests, Azure.
   • Stage Talan Tunisie (2025) : LLM, RAG
     multimodal, systèmes multi-agents.
-  • Projets : ML (XGBoost, 85 % sur BTC),
-    RAG agentique, séries temporelles, BI.
+  • Projets : ML (XGBoost, clustering),
+    RAG, séries temporelles, BI.
 
 RECRUTEUR PRESSÉ ?
   → Double-cliquez sur [Vue recruteur]
